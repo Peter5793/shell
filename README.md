@@ -42,7 +42,7 @@ Table of Contents:
 6. Simple shell 0.3
 7. Simple shell 0.4
 8. Simple shell 0.4.1
-9. Simple shell 0.4.2
+9. Simple shell 0.4.2 
 10. Simple shell 1.0
 11. setenv, unsetenv
 12. cd
