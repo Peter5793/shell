@@ -1,3 +1,4 @@
-The Simple_Shell Team
-Felicia Hsieh - Developer
-Kiren Srinivasan - Developer
+# The Simple_Shell Team
+
+* [Kiren Srinivasan](//github.com/srinitude) - Developer
+* [Felicia Hsieh](//github.com/feliciahsieh) - Developer
