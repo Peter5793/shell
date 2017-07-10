@@ -1,0 +1,58 @@
+.TH SIMPLE_SHELL "9 July 2017" "01" "User Commands"
+.SH NAME
+.B simple_shell
+- alternate implementation of a C shell
+.SH SYNOPSIS
+.B simple_shell
+.I FORMAT
+.I [ARGUMENT]
+.B ...
+.PP
+.SH DESCRIPTION
+Creates a simple C shell running in Linux shell in interactive and non-interactive mode.
+.PP
+FORMAT dictates the shell commands.
+.PP
+0.1 an alternative UNIX command line interpreter
+.PP
+0.1.1 getline - implements an alternative getline() function
+.PP
+0.2 handles command line with arguments
+.PP
+0.2.1 strtok - an alternative strtok function
+.PP
+0.3 PATH - handles the PATH environment variable
+.PP
+0.4 exit - implements the exit built-in that exits the shell
+.PP
+0.4.1 exit with arguments - handles arguments for the built-in exit. Format is exit status, where status is an integer used to exit the shell.
+.PP
+0.4.2 Ctrl+c - handles Ctrl+c by not exiting the shell
+.PP
+1.0 env - implements the env built-in that prints the current environment
+.PP
+1.1 setenv and unsetenv - implements the setenv and unsetenv builtin commands
+.PP
+1.2 cd - implements the built-in command, cd.
+.PP
+; - handles the command ";" separator
+.PP
+&& , || - handles the && and || logical operators
+.PP
+aliases - handles aliases
+.PP
+variable replacement - handles variable replacement, $?, and $$ variable
+.PP
+comments - handles # comments
+.PP
+help - implement the help built-in
+.PP
+history built-in
+.PP
+filename - can handle simple_shell [filename]
+.SH AUTHOR
+Written by Felicia Hsieh and Kiren Srinivasan
+.SH REPORTING BUGS
+Please report bugs to 214@holbertonschool.com and 155@holbertonschool.com
+.SH SEE ALSO
+shell(3xs)
