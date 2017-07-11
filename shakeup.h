@@ -10,8 +10,9 @@
 #include <string.h>
 
 int start_shell();
+void shakeup_error(char *func_name, char *instance, int code);
 char **tokenize(char *str, char delim[]);
-unsigned int _strlen(char *str);
+unsigned int _strlen(const char *str);
 char *_strdup(const char *s);
 char *_strcat(char *dest, char *source);
 

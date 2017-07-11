@@ -1,30 +1,5 @@
 #include "shakeup.h"
 
-void shakeup_error(char *func_name, char *instance, int code)
-{
-	const char *error;
-	char mut_error[100] = "Error: ";
-	char *s;
-	unsigned int lenName = 0, lenInstance = 0, i;
-
-	lenName = _strlen(func_name);
-	lenInstance = _strlen(instance);
-
-	s = malloc((7 + lenName + lenInstance + 1) * sizeof(char));
-
-	for(i = 0; i < lenName; i++)
-		mut_error[7 + i] = func_name[i];
-	for(i = 0; i < lenInstance; i++)
-		mut_error[7 + lenName + lenInstance] = instance[i];
-	instance[i] = '\0';
-
-	error = _strcat(mut_error, s);
-
-	perror(error);
-
-	free(s);
-}
-
 /**
  * start_shell - Starts the shell
  *

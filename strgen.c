@@ -8,12 +8,13 @@
  *
  */
 
-unsigned int _strlen(char *str)
+unsigned int _strlen(const char *str)
 {
 	unsigned int length = 0;
+
 	if (!str)
 		return (0);
-	for(length = 0; str[length]; length++)
+	for (length = 0; str[length]; length++)
 		;
 	return (length);
 }
@@ -31,7 +32,7 @@ char *_strdup(const char *s)
 	char *result;
 	unsigned int i, len;
 
-	if(!s)
+	if (!s)
 		return (NULL);
 	len = _strlen(s);
 	result = malloc(++len * sizeof(char));

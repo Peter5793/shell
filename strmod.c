@@ -12,7 +12,7 @@
 
 char *_strcat(char *dest, char *source)
 {
-	int i;
+	unsigned int i;
 
 	if ((dest == NULL) || (source == NULL))
 		return (dest);
