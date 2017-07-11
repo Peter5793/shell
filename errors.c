@@ -15,7 +15,7 @@ void shakeup_error(char *func_name_instance, int code)
 
 	if (func_name_instance == NULL)
 		exit(98);
-	for(i = 0; i < func_name_instance[i]; i++)
+	for(i = 0; func_name_instance[i]; i++)
 		mut_error[7 + i] = func_name_instance[i];
 	mut_error[i] = '\0';
 	error = (const char *)mut_error;
