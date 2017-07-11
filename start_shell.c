@@ -9,10 +9,8 @@
 
 int start_shell(void)
 {
-	char *buffer;
+	char *buffer, **tokens, delim[] = " |><";
 	ssize_t chars_read;
-	char **tokens;
-	char delim[] = " |><;";
 	size_t len = 100;
 	pid_t child_pid;
 	int status;
