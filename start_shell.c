@@ -9,7 +9,7 @@
 
 int start_shell(void)
 {
-	char *buffer, **tokens, delim[] = " |><";
+	char *buffer, **tokens, delim[] = " |><", prompt[] = "#shakeup$ ";
 	ssize_t chars_read;
 	size_t len = 100;
 	pid_t child_pid;
@@ -17,7 +17,7 @@ int start_shell(void)
 
 	while (1)
 	{
-		printf("#shakeup$ ");
+		write(1, &prompt, sizeof(prompt));
 		buffer = malloc(len);
 		if (buffer == NULL)
 			perror("Error: start_shell() 1");
