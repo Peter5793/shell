@@ -31,14 +31,11 @@ int start_shell(void)
 		tokens = tokenize(buffer, delim);
 		child_pid = fork();
 		if (child_pid == -1)
-		{
-			perror("Error: start_shell() 3");
-			exit(1);
-		}
+			perror("Error: start_shell() 2");
 		if (child_pid == 0)
 		{
 			if (execve(tokens[0], tokens, NULL) == -1)
-				perror("Error: start_shell() 4");
+				perror("Error: start_shell() 3");
 		}
 		else
 			wait(&status);
