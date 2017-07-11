@@ -11,5 +11,8 @@
 
 int start_shell();
 char **tokenize(char *str, char delim[]);
+unsigned int _strlen(char *str);
+char *_strdup(const char *s);
+char *_strcat(char *dest, char *source);
 
 #endif /* SHAKEUP */
