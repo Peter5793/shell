@@ -23,7 +23,11 @@ int start_shell(void)
 			perror("Error: start_shell() 1");
 		chars_read = getline(&buffer, &len, stdin);
 		if (chars_read == -1)
-			perror("Error: start_shell() 2");
+		{
+			buffer[0] = '\n';
+			write(1, &(buffer[0]), 1);
+			exit(0);
+		}
 		tokens = tokenize(buffer, delim);
 		child_pid = fork();
 		if (child_pid == -1)
