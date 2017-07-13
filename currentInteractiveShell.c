@@ -2,8 +2,8 @@
 
 int interactiveShell()
 {
-	char **bufferTokens, *buffer, *alias;
-	size_t len = 101;
+	char **bufferTokens, *buffer;
+	size_t len = 300;
 	int eof = -1;
 
 	while (1)
@@ -11,7 +11,7 @@ int interactiveShell()
 		printPrompt("shakeup$");
 		buffer = mallocBuffer(len);
 		getUserInput(&buffer, &len);
-		eof = checkEOF(&buffer);
+		eof = checkEOF(buffer);
 		bufferTokens = parseBuffer(buffer);
 		attemptHshCmd(bufferTokens);
 		if (correctAbsPath(bufferTokens[0]))
