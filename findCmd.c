@@ -52,12 +52,3 @@ char *findCmd(char *b)
 	}
 	return (t);
 }
-
-int main()
-{
-	char *cmd;
-
-	cmd = findCmd("ls");
-
-	return (0);
-}
