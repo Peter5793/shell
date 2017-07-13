@@ -1,7 +1,7 @@
 #include "shakeup.h"
 
 /**
- * _strcat - Concatenate two strings
+ * __strcat - Concatenate two strings
  *
  * @dest: The string to concat to
  * @source: The string to add from
@@ -9,15 +9,19 @@
  * Return: Pointer to dest string
  *
  */
-
-char *_strcat(char *dest, char *source)
+char *__strcat(char *dest, char *src)
 {
-	unsigned int i;
+	int len = 0;
+	int i;
 
-	if ((dest == NULL) || (source == NULL))
-		return (dest);
-	for (i = 0; i < _strlen(source); i++)
-		dest[_strlen(dest) + i] = source[i];
-	dest[_strlen(dest) + i] = '\0';
+	while (dest[len])
+	{
+		len++;
+	}
+	for (i = 0; src[i]; i++)
+	{
+		dest[len + i] = src[i];
+	}
+	dest[len + i + 1] = '\0';
 	return (dest);
 }
