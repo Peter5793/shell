@@ -1,5 +1,6 @@
 #ifndef SHAKEUP
 #define SHAKEUP
+#define HSHPATH "PATH"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -14,6 +15,6 @@ int nonInteractiveShell();
 char **tokenize(char *str, char delim[]);
 unsigned int _strlen(const char *str);
 char *_strdup(const char *s);
-char *_strcat(char *dest, char *source);
+char *__strcat(char *dest, char *source);
 
 #endif /* SHAKEUP */
