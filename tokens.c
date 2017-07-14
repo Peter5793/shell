@@ -1,14 +1,11 @@
 #include "shakeup.h"
 
-char **tokenize(char *str, char delim[])
+char **tokenize(char *str, char *delim)
 {
-	char *current, *newln;
+	char *current;
 	char **tokens;
 	int i = 0;
 
-	newln = strchr(delim, '\n');
-	if (!newln)
-		delim = strcat(delim, "\n");
 	current = strtok(str, delim);
 	tokens = malloc(10 * sizeof(char *));
 	if (tokens == NULL)

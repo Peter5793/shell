@@ -1,6 +1,0 @@
-#include "shakeup.h"
-
-char *findAlias(char *b)
-{
-	
-}

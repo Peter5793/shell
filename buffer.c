@@ -36,7 +36,7 @@ int checkEOF(char *buffer)
 
 char **parseBuffer(char *buffer)
 {
-	char delim[] = " ";
+	char *delim = " \t\r\n";
 
 	char **tokens = tokenize(buffer, delim);
 	return (tokens);
