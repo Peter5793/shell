@@ -1,0 +1,74 @@
+#include "shakeup.h"
+
+extern char **environ;
+
+char *_getenv(const char *name)
+{
+	int i = 0, j;
+	char *token;
+
+	token = strtok(&(environ[0][0]), "=");
+
+	while (environ[i])
+	{
+		if (strcmp(token, name) == 0)
+		{
+			for(j = 0; environ[i - 1][j]; j++)
+				;
+			environ[i - 1][j] = '=';
+			return (environ[i - 1]);
+		}
+		token = strtok(&(environ[i][0]), "=");
+		i++;
+	}
+
+	return(NULL);
+}
+
+/* find the comamnd with PATH ONLY => /bin/ls */
+char *findCmd(char *b)
+{
+	char *hshPath, *token, *slash = "/", *cpy, *t;
+	struct stat st;
+	char temp[100];
+	int count1;
+
+	printf("buffer:%s\n", b);
+
+	hshPath = _getenv(HSHPATH);
+	token = strtok(hshPath, "="); /*remove PATH text*/
+	for(token = strtok(NULL, ":"); token != NULL; token = strtok(NULL, ":"))
+	{
+		printf("token:%s\n", token);
+
+		count1 = _strlen(token) + _strlen(slash) + _strlen(b) + 1;
+		printf("count1:%d nToken:%d nSlash:%d nB:%d\n", count1, _strlen(token), _strlen(slash), _strlen(b));
+
+/*		t = malloc(count1 * sizeof(char));
+		t = _strcat(t , token);
+		printf("t1:%s\n", t);
+		t = _strcat(t , slash);
+		printf("t2:%s\n", t);
+		t = _strcat(t , b);
+		printf("t3:%s\n", t);
+
+		printf("Final t:%s\n", t);
+/*
+		if (stat(t, &st) == 0)
+		{
+			printf("FOUND:\n");
+		}
+*/
+	}
+
+	return (NULL);
+}
+
+int main()
+{
+	char *cmd;
+
+	cmd = findCmd("ls");
+
+	return (0);
+}
