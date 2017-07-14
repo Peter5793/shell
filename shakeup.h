@@ -20,5 +20,9 @@ char *mallocBuffer(size_t length);
 void getUserInput(char **buffer, size_t *length);
 int checkEOF(char *buffer);
 char **parseBuffer(char *buffer);
+void printPrompt(char *prompt);
+size_t correctAbsPath(char *token);
+char *findCmd(char *b);
+int createFork(char **bufferTokens);
 
 #endif /* SHAKEUP */
