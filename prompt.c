@@ -11,5 +11,13 @@ void printPrompt(char *prompt)
 	unsigned int length;
 
 	length = _strlen(prompt);
-	write(1, &prompt, (size_t)length);
+	write(1, prompt, (size_t)length);
 }
+
+/*
+int main(void)
+{
+	printPrompt("shakeup$");
+	return (0);
+}
+*/
