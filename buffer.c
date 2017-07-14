@@ -42,7 +42,6 @@ char **parseBuffer(char *buffer)
 	return (tokens);
 }
 
-
 /*
 // parse buffer
 int main(void)

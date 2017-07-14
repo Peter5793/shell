@@ -3,13 +3,12 @@
 int interactiveShell()
 {
 	char **bufferTokens, *buffer = NULL;
-	size_t len = 300;
+	size_t len = 300, i;
 
 	while (1)
 	{
-		printPrompt("shakeup$");
-		if (buffer == NULL)
-			buffer = mallocBuffer(len);
+		printPrompt("shakeup$ ");
+		buffer = mallocBuffer(len);
 		getUserInput(&buffer, &len);
 		bufferTokens = parseBuffer(buffer);
 		if (correctAbsPath(bufferTokens[0]))
@@ -17,6 +16,8 @@ int interactiveShell()
 		else
 		{
 			bufferTokens[0] = findCmd(bufferTokens[0]);
+			for (i = 0; bufferTokens[i]; i++)
+				printf("IS: Token %zu: %s\n", i, bufferTokens[i]);
 			createFork(bufferTokens);
 		}
 	}
