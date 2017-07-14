@@ -17,12 +17,13 @@ unsigned int _strlen(const char *str);
 char *_strdup(const char *s);
 char *__strcat(char *dest, char *source);
 char *mallocBuffer(size_t length);
-void getUserInput(char **buffer, size_t *length);
+void getUserInput(char *buffer, size_t *length);
 int checkEOF(char *buffer);
 char **parseBuffer(char *buffer);
 void printPrompt(char *prompt);
 size_t correctAbsPath(char *token);
 char *findCmd(char *b);
 int createFork(char **bufferTokens);
+char *createCWDFile(char *file);
 
 #endif /* SHAKEUP */

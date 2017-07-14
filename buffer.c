@@ -10,15 +10,15 @@ char *mallocBuffer(size_t length)
         return (buf);
 }
 
-void getUserInput(char **buffer, size_t *length)
+void getUserInput(char *buffer, size_t *length)
 {
 	ssize_t chars_read;
 
-	chars_read = getline(buffer, length, stdin);
+	chars_read = getline(&buffer, length, stdin);
 	if (chars_read == -1)
 	{
-		buffer[0] = "\n";
-		write(1, &(buffer[0]), 1);
+		buffer[0] = '\n';
+		write(1, buffer, 1);
 		free(buffer);
 		exit(0);
 	}
