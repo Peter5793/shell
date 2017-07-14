@@ -14,10 +14,10 @@ void getUserInput(char **buffer, size_t *length)
 {
 	ssize_t chars_read;
 
-	chars_read = getline(buffer, length);
+	chars_read = getline(buffer, length, stdin);
 	if (chars_read == -1)
 	{
-		buffer[0] = '\n';
+		buffer[0] = "\n";
 		write(1, &(buffer[0]), 1);
 		free(buffer);
 		exit(0);
@@ -36,6 +36,56 @@ int checkEOF(char *buffer)
 
 char **parseBuffer(char *buffer)
 {
-	char **tokens = tokenize(buffer, " ");
+	char delim[] = " ";
+
+	char **tokens = tokenize(buffer, delim);
 	return (tokens);
 }
+
+
+/*
+// parse buffer
+int main(void)
+{
+	char *buffer, **tokens;
+	size_t len = 300, i;
+	int eof = -1;
+
+	buffer = mallocBuffer(len);
+	getUserInput(&buffer, &len);
+	tokens = parseBuffer(buffer);
+	printf("Tokens double pointer: %p\n", (void *)tokens);
+	for (i = 0; tokens[i]; i++)
+		printf("Token %zu: %s, address: %p\n", i, tokens[i], (void *)tokens[i]);
+	printf("NULL Buffer: %p\n", (void *)buffer);
+	return (0);
+}
+*/
+
+/*
+// malloc buffer
+int main(void)
+{
+	char *buffer;
+	size_t len = 300;
+
+	buffer = mallocBuffer(len);
+	printf("Address: %p\n", (void *)buffer);
+	printf("Contents: %s %zu\n", buffer, sizeof(buffer));
+	return (0);
+}
+*/
+
+/*
+// get user input
+int main(void)
+{
+	char *buffer;
+	size_t len = 300;
+
+	buffer = mallocBuffer(len);
+	getUserInput(&buffer, &len);
+	printf("User input: %s", buffer);
+	return (0);
+}
+*/

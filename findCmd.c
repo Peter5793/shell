@@ -52,3 +52,18 @@ char *findCmd(char *b)
 	}
 	return (t);
 }
+
+int main(void)
+{
+        char *buffer, **tokens;
+        size_t len = 300, i;
+
+        buffer = mallocBuffer(len);
+        getUserInput(&buffer, &len);
+        tokens = parseBuffer(buffer);
+	tokens[0] = findCmd(tokens[0]);
+
+	for (i = 0; tokens[i]; i++)
+		printf("Token %zu: %s, address: %p\n", i, tokens[i], (void *)tokens[i]);
+        return (0);
+}
