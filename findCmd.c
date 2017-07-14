@@ -54,6 +54,7 @@ char *findCmd(char *b)
 	return (t);
 }
 
+/*
 int main(void)
 {
         char *buffer, **tokens;
@@ -68,3 +69,4 @@ int main(void)
 		printf("Token %zu: %s, address: %p\n", i, tokens[i], (void *)tokens[i]);
         return (0);
 }
+*/

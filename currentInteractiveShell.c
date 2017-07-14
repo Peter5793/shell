@@ -2,16 +2,16 @@
 
 int interactiveShell()
 {
-	char **bufferTokens, *buffer;
+	char **bufferTokens, *buffer = NULL;
 	size_t len = 300;
 
 	while (1)
 	{
 		printPrompt("shakeup$");
-		buffer = mallocBuffer(len);
+		if (buffer == NULL)
+			buffer = mallocBuffer(len);
 		getUserInput(&buffer, &len);
 		bufferTokens = parseBuffer(buffer);
-		attemptHshCmd(bufferTokens);
 		if (correctAbsPath(bufferTokens[0]))
 			createFork(bufferTokens);
 		else
