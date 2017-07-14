@@ -25,7 +25,6 @@ char *_getenv(const char *name)
 	return(NULL);
 }
 
-/* find the comamnd with PATH ONLY => /bin/ls */
 char *findCmd(char *b)
 {
 	char *hshPath, *token, *slash = "/", *t = NULL;
@@ -50,5 +49,7 @@ char *findCmd(char *b)
 			return (t);
 		}
 	}
+	if(token == NULL)
+		return (NULL);
 	return (t);
 }
