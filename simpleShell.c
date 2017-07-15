@@ -8,7 +8,7 @@ int main(void)
 	charsRead = read(0, &buf, 101);
 	if (charsRead == 0)
 		interactiveShell();
-	/*else
-	  nonInteractiveShell();*/
+	else
+		nonInteractiveShell(buf);
 	return (0);
 }
