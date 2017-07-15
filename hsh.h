@@ -26,7 +26,7 @@ typedef struct general_s
 } general_t;
 
 
-general_t *initStruct(general_t *main);
+general_t *initStruct();
 int add_address(general_t *main, void *ptr);
 list_t *add_node_end(list_t **head, void *ptr);
 void free_list(general_t *main);
