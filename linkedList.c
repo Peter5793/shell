@@ -100,17 +100,17 @@ void free_list(general_t *main)
  * @genHead: pointer to main struct
  * Return: none
  */
-void freeStruct(general_t *main)
+void freeStruct(general_t *genHead)
 {
 	list_t *node;
 
-	if ((main == NULL) || (main->head = NULL))
+	if ((genHead == NULL) || (genHead->head = NULL))
 		return;
-	while (main->head != NULL)
+	while (genHead->head != NULL)
 	{
-		node = main->head->next;
-		free(main->head);
-		main->head = node;
+		node = genHead->head->next;
+		free(genHead->head);
+		genHead->head = node;
 	}
 }
 
@@ -122,14 +122,12 @@ void freeStruct(general_t *main)
 size_t print_list(general_t *main)
 {
 	unsigned int count = 0;
-	char *temp;
 
 	while (main->head)
 	{
-		printf("%d: %p\n", count, main->head->data);
-		temp = (char *)(main->head->data);
-		printf("Contents:%s\n", temp);
-		count++;
+/*		printf("%d: %p\n", count, main->head->data);
+		printf("Contents:%s\n", (char *)(main->head->data));
+*/		count++;
 		main->head = main->head->next;
 	}
 
@@ -194,10 +192,10 @@ int main(void)
 	printf("test2:%p %s\n", (void *)&test2, test2);
 	printf("test3:%p %s\n", (void *)&test3, test3);
 
-	if (add_address(genHead, (void *)&test1))
+	if (add_address(genHead, (void *)test1))
 		printf("Added ptr:%s\n", test1);
-	add_address(genHead, (void *)&test2);
-	add_address(genHead, (void *)&test3);
+	add_address(genHead, (void *)test2);
+	add_address(genHead, (void *)test3);
 
 	print_list(genHead);
 	free_list(genHead);
