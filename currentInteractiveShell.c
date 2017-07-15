@@ -18,4 +18,5 @@ int interactiveShell()
 			createFork(bufferTokens);
 		}
 	}
+	return (0);
 }

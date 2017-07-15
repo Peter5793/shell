@@ -11,7 +11,7 @@
 #include <string.h>
 
 int interactiveShell();
-int nonInteractiveShell();
+int nonInteractiveShell(char *buffer);
 char **tokenize(char *str, char delim[]);
 unsigned int _strlen(const char *str);
 char *_strdup(const char *s);
