@@ -3,13 +3,12 @@
 int interactiveShell()
 {
 	char **bufferTokens, *buffer = NULL;
-	size_t len = 300;
+	size_t len;
 
 	while (1)
 	{
 		printPrompt("shakeup$ ");
-		buffer = mallocBuffer(len);
-		getUserInput(buffer, &len);
+		buffer = getUserInput(buffer, &len);
 		bufferTokens = parseBuffer(buffer);
 		if (correctAbsPath(bufferTokens[0]))
 			createFork(bufferTokens);

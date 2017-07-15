@@ -10,18 +10,24 @@ char *mallocBuffer(size_t length)
         return (buf);
 }
 
-void getUserInput(char *buffer, size_t *length)
+char *getUserInput(char *buffer, size_t *length)
 {
 	ssize_t chars_read;
 
 	chars_read = getline(&buffer, length, stdin);
-	if (chars_read == -1)
+	if ((chars_read == -1) && (!buffer))
+	{
+		perror("Invalid argument");
+		exit(EXIT_FAILURE);
+	}
+	else if (chars_read == -1 && buffer)
 	{
 		buffer[0] = '\n';
 		write(1, buffer, 1);
 		free(buffer);
 		exit(0);
 	}
+	return (buffer);
 }
 
 int checkEOF(char *buffer)
