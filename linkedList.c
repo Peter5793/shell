@@ -1,6 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include "hsh.h"
+#include "shakeup.h"
 
 /**
  * initStruct - initializes the hsh struct for tracking variables
@@ -27,7 +25,6 @@ general_t *initStruct(void)
 	while(envir[i])
 	{
 		e[i] = envir[i];
-		printf("old:%s\nnew:%s\n", envir[i], e[i]);
 		i++;
 	}
 
