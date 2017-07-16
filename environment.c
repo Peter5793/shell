@@ -25,17 +25,24 @@ char *_getenv(char *name)
 	return(NULL);
 }
 
-void runEnv()
+void runEnv(general_t *genHead)
 {
-	printf("runEnv():\n");
+	int i = 0;
+
+	while(genHead->_env[i])
+	{
+		write(1, genHead->_env[i], _strlen(genHead->_env[i]));
+		write(1, "\n", 1);
+		i++;
+	}
 }
 
 void runSetenv()
 {
-	printf("runSetenv():\n");
+	write(1, "runSetenv\n", 10);
 }
 
 void runUnsetenv()
 {
-	printf("runUnsetenv():\n");
+	write(1, "runUnsetenv\n", 12);
 }

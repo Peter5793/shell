@@ -24,7 +24,6 @@ _builtins_t *initBuiltins(void)
 general_t *initStruct(char **env)
 {
 	general_t *uno;
-	char **e = NULL;
 	int i = 0;
 
 	uno = malloc(sizeof(general_t));
@@ -34,15 +33,15 @@ general_t *initStruct(char **env)
 		return (NULL);
 	}
 
-	e = malloc(ENVSIZE * sizeof(char));
-	if (e == NULL)
+	uno->_env = malloc(ENVSIZE * sizeof(char));
+	if (uno->_env == NULL)
 	{
 		perror("Environment malloc failed");
 		return (NULL);
 	}
 	while(env[i])
 	{
-		e[i] = env[i];
+		uno->_env[i] = env[i];
 		i++;
 	}
 

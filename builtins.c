@@ -1,6 +1,4 @@
 #include "shakeup.h"
-#include "hsh.h"
-#include "builtins.h"
 /*
 char **initEnv(char **envir)
 {
@@ -22,14 +20,15 @@ char **initEnv(char **envir)
 }
 */
 
-void findBuiltin(_builtins_t b[], char *cmd)
+void findBuiltin(general_t *vars, char *cmd)
 {
 	int i = 0;
+	_builtins_t *b = vars->builtins;
 
 	while (b[i].command)
 	{
 		if (_strcmp(cmd, b[i].command) == 0)
-		       b[i].f();
+		       b[i].f(vars);
 		i++;
 	}
 }

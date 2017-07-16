@@ -13,7 +13,7 @@ int interactiveShell(char **env)
 		printPrompt("shakeup$ ");
 		buffer = getUserInput(buffer, &len);
 		bufferTokens = parseBuffer(buffer);
-		findBuiltin(vars->builtins, bufferTokens[0]);
+		findBuiltin(vars, bufferTokens[0]);
 		if (correctAbsPath(bufferTokens[0]))
 			createFork(bufferTokens);
 		else
