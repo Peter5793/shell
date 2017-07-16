@@ -1,6 +1,6 @@
 #include "shakeup.h"
 
-int interactiveShell()
+int interactiveShell(general_t *genHead)
 {
 	char **bufferTokens, *buffer, *alias;
 	size_t len = 101;
@@ -10,6 +10,9 @@ int interactiveShell()
 	{
 		printPrompt("shakeup$");
 		buffer = mallocBuffer(len);
+		if (buffer == NULL)
+			/*WHAT TO DO?*/;
+		addMemAddress(genHead, (void *)buffer);
 		getUserInput(&buffer, &len);
 		eof = checkEOF(&buffer);
 		bufferTokens = parseBuffer(buffer);

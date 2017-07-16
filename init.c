@@ -1,6 +1,6 @@
 #include "shakeup.h"
 
-_builtins_t *initBuiltins(void)
+_builtins_t *initBuiltins(general_t *genHead)
 {
 	int numCommands = 5;
 	_builtins_t *b;
@@ -8,6 +8,8 @@ _builtins_t *initBuiltins(void)
 	b = malloc(numCommands * sizeof(_builtins_t));
 	if (b == NULL)
 		return (NULL);
+	addMemAddress(genHead, (void *)b);
+
         b[0].command = "env";
         b[0].f = runEnv;
         b[1].command = "exit";
@@ -21,7 +23,7 @@ _builtins_t *initBuiltins(void)
         return (b);
 }
 
-general_t *initStruct(char **env)
+general_t *initStruct(char **env, general_t *genHead)
 {
 	general_t *uno;
 	int i = 0;
@@ -32,6 +34,7 @@ general_t *initStruct(char **env)
 		perror("main struct failed");
 		return (NULL);
 	}
+	addMemAddress(genHead, (void *)uno);
 
 	uno->_env = malloc(ENVSIZE * sizeof(char));
 	if (uno->_env == NULL)
@@ -39,6 +42,7 @@ general_t *initStruct(char **env)
 		perror("Environment malloc failed");
 		return (NULL);
 	}
+	addMemAddress(genHead, (void *)uno->_env);
 	while(env[i])
 	{
 		uno->_env[i] = env[i];

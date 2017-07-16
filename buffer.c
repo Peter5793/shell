@@ -1,12 +1,13 @@
 #include "shakeup.h"
 
-char *mallocBuffer(size_t length)
+char *mallocBuffer(size_t length, general_t *genHead)
 {
 	char *buf;
 
 	buf = malloc(length);
 	if (buf == NULL)
 		perror("Couldn't malloc the buffer to get user input");
+	addMemAddress(genHead, (void *)buf);
         return (buf);
 }
 
@@ -40,11 +41,11 @@ int checkEOF(char *buffer)
 	return (-1);
 }
 
-char **parseBuffer(char *buffer)
+char **parseBuffer(char *buffer, general_t *genHead)
 {
 	char *delim = " \t\r\n";
 
-	char **tokens = tokenize(buffer, delim);
+	char **tokens = tokenize(buffer, delim, genHead);
 	return (tokens);
 }
 

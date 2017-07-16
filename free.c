@@ -1,6 +1,15 @@
 #include "shakeup.h"
 
 /**
+ * freeEnv - free environment data struct
+ * @genHead: pointer to main struct
+ * Return: none
+ */
+void freeEnv(general_t *genHead)
+{
+}
+
+/**
  * freeList - free list_t list
  * @genHead: pointer to new list node
  * Return: none
