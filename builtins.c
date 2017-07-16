@@ -1,24 +1,4 @@
 #include "shakeup.h"
-/*
-char **initEnv(char **envir)
-{
-	char **e = NULL;
-	int i;
-
-	e = malloc(ENVSIZE * sizeof(char));
-	if (e == NULL)
-		return (NULL);
-
-	while(envir[i])
-	{
-		e[i] = envir[i];
-		printf("old:%s\nnew:%s\n", envir[i], e[i]);
-		i++;
-	}
-
-	return (e);
-}
-*/
 
 void findBuiltin(general_t *vars, char *cmd)
 {

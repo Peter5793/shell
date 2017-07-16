@@ -1,6 +1,6 @@
 #include "shakeup.h"
 
-char **tokenize(char *str, char *delim)
+char **tokenize(char *str, char *delim, general_t *genHead)
 {
 	char *current;
 	char **tokens;
@@ -10,6 +10,7 @@ char **tokenize(char *str, char *delim)
 	tokens = malloc(10 * sizeof(char *));
 	if (tokens == NULL)
 		return (NULL);
+	addMemAddress(genHead, (void *)tokens);
 	for (i = 0; i < 10; i++)
 	{
 		tokens[i] = malloc(30 * sizeof(char));

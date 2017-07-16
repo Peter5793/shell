@@ -1,40 +1,6 @@
 #include "shakeup.h"
 
 /**
- * initStruct - initializes the hsh struct for tracking variables
- * @main: pointer to the struct
- * Result: pointer to general_t struct
- */
-general_t *initStruct(void)
-{
-	general_t *main;
-	char **e = NULL;
-	int i;
-
-	main = malloc(sizeof(general_t));
-	if(main == NULL)
-	{
-		perror("main struct failed");
-		return(NULL);
-	}
-
-	e = malloc(ENVSIZE * sizeof(char));
-	if (e == NULL)
-		return (NULL);
-
-	while(envir[i])
-	{
-		e[i] = envir[i];
-		i++;
-	}
-
-	main->nCommands = 0;
-	main->head = NULL;
-
-	return (main);
-}
-
-/**
  * addMemAddress - add the memory address into linked list for freeing later
  * @main: pointer to program strut
  * @ptr: pointer to the malloc'ed memory
@@ -59,12 +25,10 @@ list_t *addNodeEnd(list_t **head, void *ptr)
 {
 	list_t *newnode = NULL;
 	list_t *list = NULL;
-	unsigned int n = 0;
 
 	newnode = malloc(sizeof(list_t));
 	if (newnode == NULL)
 		return (NULL);
-
 	list = *head;
 
 	newnode->data = ptr;
@@ -114,7 +78,6 @@ size_t printList(general_t *genHead)
 list_t *addNode(list_t **head, void *ptr)
 {
 	list_t *newnode = NULL;
-	unsigned int n = 0;
 
 	newnode = malloc(sizeof(list_t));
 	if (newnode == NULL)

@@ -1,6 +1,6 @@
 #include "shakeup.h"
 
-char *findAlias(char *b)
+char *findAlias(char *b, general_t genHead)
 {
 	char *hshAlias, *token, *slash = "/", *t = NULL;
 	struct stat st;
@@ -14,6 +14,9 @@ char *findAlias(char *b)
 		count1 = _strlen(token) + _strlen(slash) + _strlen(b) + 1;
 
 		t = malloc(count1 * sizeof(char));
+		if (t == NULL)
+			return (NULL);
+		addMemAddress(genHead, (void *)t);
 
 		t = __strcat(t, token);
 

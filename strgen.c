@@ -27,7 +27,7 @@ unsigned int _strlen(const char *str)
  *
  */
 
-char *_strdup(const char *s)
+char *_strdup(const char *s, general_t *genHead)
 {
 	char *result;
 	unsigned int i, len;
@@ -36,6 +36,10 @@ char *_strdup(const char *s)
 		return (NULL);
 	len = _strlen(s);
 	result = malloc(++len * sizeof(char));
+	if (result == NULL)
+		return (NULL);
+	addMemAddress(genHead, (void *)result);
+
 	for (i = 0; s[i]; i++)
 		result[i] = s[i];
 	result[i] = '\0';
