@@ -84,6 +84,5 @@ void runUnsetenv();
 void freeEnv(general_t *genHead);
 void freeList(general_t *genHead);
 void freeStruct(general_t *genHead);
-void freeAllMemory(general_t *genHead);
 
 #endif

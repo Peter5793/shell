@@ -7,6 +7,7 @@
  */
 void freeEnv(general_t *genHead)
 {
+	free(genHead->_env);
 }
 
 /**
@@ -39,11 +40,15 @@ void freeStruct(general_t *genHead)
 
 	if ((genHead == NULL) || (genHead->head = NULL))
 		return;
+	/*free memory pointed to by data*/
 	while (genHead->head != NULL)
 	{
 		node = genHead->head->next;
+		free(genHead->head->data);
 		free(genHead->head);
 		genHead->head = node;
 	}
+
 	free(genHead->_env);
+	free(genHead->builtins);
 }
