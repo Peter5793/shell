@@ -26,11 +26,12 @@ typedef struct general_s
 } general_t;
 
 
-general_t *initStruct();
-int add_address(general_t *main, void *ptr);
-list_t *add_node_end(list_t **head, void *ptr);
-void free_list(general_t *main);
-size_t print_list(general_t *main);
-list_t *add_node(list_t **head, void *ptr);
+general_t *initStruct(void);
+int addMemAddress(general_t *genHead, void *ptr);
+list_t *addNodeEnd(list_t **head, void *ptr);
+void freeList(general_t *genHead);
+void freeStruct(general_t *genHead);
+size_t printList(general_t *genHead);
+list_t *addNode(list_t **head, void *ptr);
 
 #endif

@@ -7,7 +7,7 @@
  * @main: pointer to the struct
  * Result: pointer to general_t struct
  */
-general_t *initStruct()
+general_t *initStruct(void)
 {
 	general_t *main;
 
@@ -25,26 +25,27 @@ general_t *initStruct()
 }
 
 /**
- * add_address - add the memory address into linked list for freeing later
+ * addMemAddress - add the memory address into linked list for freeing later
+ * @main: pointer to program strut
  * @ptr: pointer to the malloc'ed memory
  * Result: 0 if success, -1 if fail
  */
-int add_address(general_t *main, void *ptr)
+int addMemAddress(general_t *genHead, void *ptr)
 {
-	if ((main == NULL) || (ptr == NULL))
+	if ((genHead == NULL) || (ptr == NULL))
 		return (-1);
 
-	add_node_end(&(main->head), ptr);
+	addNodeEnd(&(genHead->head), ptr);
 	return(0);
 }
 
 /**
- * add_node_end - adds a new node at the beginning of a list_t list
+ * addNodeEnd - adds a new node at the beginning of a list_t list
  * @head: pointer to new list node
  * @ptr: ptr element in list element
  * Return: address of the new element or NULL if it failed
  */
-list_t *add_node_end(list_t **head, void *ptr)
+list_t *addNodeEnd(list_t **head, void *ptr)
 {
 	list_t *newnode = NULL;
 	list_t *list = NULL;
@@ -76,22 +77,22 @@ list_t *add_node_end(list_t **head, void *ptr)
 }
 
 /**
- * free_list - free list_t list
- * @head: pointer to new list node
+ * freeList - free list_t list
+ * @genHead: pointer to new list node
  * Return: none
  */
-void free_list(general_t *main)
+void freeList(general_t *genHead)
 {
 	list_t *node;
 
-	if ((main == NULL) || (main->head = NULL))
+	if ((genHead == NULL) || (genHead->head = NULL))
 		return;
 
-	while (main->head != NULL)
+	while (genHead->head != NULL)
 	{
-		node = main->head->next;
-		free(main->head);
-		main->head = node;
+		node = genHead->head->next;
+		free(genHead->head);
+		genHead->head = node;
 	}
 }
 
@@ -115,32 +116,31 @@ void freeStruct(general_t *genHead)
 }
 
 /**
- * print_list - prints all the elements of a list_t list
- * @h: linked list
+ * printList - prints all the elements of a list_t list
+ * @genHead: linked list
  * Return: size of linked list
  */
-size_t print_list(general_t *main)
+size_t printList(general_t *genHead)
 {
 	unsigned int count = 0;
 
-	while (main->head)
+	while (genHead->head)
 	{
-/*		printf("%d: %p\n", count, main->head->data);
-		printf("Contents:%s\n", (char *)(main->head->data));
-*/		count++;
-		main->head = main->head->next;
+/*		printf("%d:%p:%s\n", count, genHead->head->data, (char *)(genHead->head->data));*/
+		count++;
+		genHead->head = genHead->head->next;
 	}
 
 	return (count);
 }
 
 /**
- * add_node - adds a new node at the beginning of a list_t list.
+ * addNode - adds a new node at the beginning of a list_t list.
  * @head: pointer to new list node
- * @ptr: ptr to element in list element
+ * @ptr: pointer to memory address to be stored in list element
  * Return: address of the new element or NULL if it failed
  */
-list_t *add_node(list_t **head, void *ptr)
+list_t *addNode(list_t **head, void *ptr)
 {
 	list_t *newnode = NULL;
 	unsigned int n = 0;
@@ -170,6 +170,7 @@ list_t *add_node(list_t **head, void *ptr)
  *
  * Return: Always 0.
  */
+/*
 int main(void)
 {
 	general_t *genHead = NULL;
@@ -188,19 +189,20 @@ int main(void)
 	__strcat(test2, "world");
 	__strcat(test3, "holberton");
 
-	printf("test1:%p %s\n", (void *)&test1, test1);
-	printf("test2:%p %s\n", (void *)&test2, test2);
-	printf("test3:%p %s\n", (void *)&test3, test3);
+	printf("test1:%p %s\n", (void *)test1, test1);
+	printf("test2:%p %s\n", (void *)test2, test2);
+	printf("test3:%p %s\n", (void *)test3, test3);
 
-	if (add_address(genHead, (void *)test1))
+	if (addMemAddress(genHead, (void *)test1))
 		printf("Added ptr:%s\n", test1);
-	add_address(genHead, (void *)test2);
-	add_address(genHead, (void *)test3);
+	addMemAddress(genHead, (void *)test2);
+	addMemAddress(genHead, (void *)test3);
 
-	print_list(genHead);
-	free_list(genHead);
+	printList(genHead);
+	freeList(genHead);
 	freeStruct(genHead);
 	genHead = NULL;
 
 	return (0);
 }
+*/
