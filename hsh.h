@@ -25,7 +25,7 @@ typedef struct general_s
 {
 	char **_env;
 	_builtins_t *builtins;
-	unsigned int nCommands;
+	static unsigned int nCommands;
 	list_t *head;
 } general_t;
 
