@@ -10,12 +10,25 @@
 general_t *initStruct(void)
 {
 	general_t *main;
+	char **e = NULL;
+	int i;
 
 	main = malloc(sizeof(general_t));
 	if(main == NULL)
 	{
 		perror("main struct failed");
 		return(NULL);
+	}
+
+	e = malloc(ENVSIZE * sizeof(char));
+	if (e == NULL)
+		return (NULL);
+
+	while(envir[i])
+	{
+		e[i] = envir[i];
+		printf("old:%s\nnew:%s\n", envir[i], e[i]);
+		i++;
 	}
 
 	main->nCommands = 0;
@@ -74,45 +87,6 @@ list_t *addNodeEnd(list_t **head, void *ptr)
 		newnode->next = NULL;
 	}
 	return (newnode);
-}
-
-/**
- * freeList - free list_t list
- * @genHead: pointer to new list node
- * Return: none
- */
-void freeList(general_t *genHead)
-{
-	list_t *node;
-
-	if ((genHead == NULL) || (genHead->head = NULL))
-		return;
-
-	while (genHead->head != NULL)
-	{
-		node = genHead->head->next;
-		free(genHead->head);
-		genHead->head = node;
-	}
-}
-
-/**
- * freeStruct - free main program general_t struct
- * @genHead: pointer to main struct
- * Return: none
- */
-void freeStruct(general_t *genHead)
-{
-	list_t *node;
-
-	if ((genHead == NULL) || (genHead->head = NULL))
-		return;
-	while (genHead->head != NULL)
-	{
-		node = genHead->head->next;
-		free(genHead->head);
-		genHead->head = node;
-	}
 }
 
 /**

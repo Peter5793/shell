@@ -11,7 +11,7 @@ char *_getenv(const char *name)
 
 	while (environ[i])
 	{
-		if (strcmp(token, name) == 0)
+		if (_strcmp(token, name) == 0)
 		{
 			for(j = 0; environ[i - 1][j]; j++)
 				;

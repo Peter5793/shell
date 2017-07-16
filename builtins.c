@@ -1,35 +1,26 @@
 #include "shakeup.h"
+#include "hsh.h"
 #include "builtins.h"
-
-_builtins_t *initBuiltins(void)
+/*
+char **initEnv(char **envir)
 {
-	int numCommands = 8;
-	_builtins_t *b;
+	char **e = NULL;
+	int i;
 
-	b = malloc(numCommands * sizeof(_builtins_t));
-	if (b == NULL)
+	e = malloc(ENVSIZE * sizeof(char));
+	if (e == NULL)
 		return (NULL);
 
-	b[0].command = "cd";
-	b[0].f = (void *)runCd;
-	b[1].command = "env";
-	b[1].f = (void *)runEnv;
-	b[2].command = "exit";
-	b[2].f = (void *)runExit;
-	b[3].command = "help";
-	b[3].f = (void *)runHelp;
-	b[4].command = "history";
-	b[4].f = (void *)runHistory;
-	b[5].command = "setenv";
-	b[5].f = (void *)runSetenv;
-	b[6].command = "unsetenv";
-	b[6].f = (void *)runUnsetenv;
+	while(envir[i])
+	{
+		e[i] = envir[i];
+		printf("old:%s\nnew:%s\n", envir[i], e[i]);
+		i++;
+	}
 
-	b[7].command = NULL;
-	b[7].f = NULL;
-
-	return (b);
+	return (e);
 }
+*/
 
 int findBuiltin(_builtins_t b[], char *cmd)
 {
@@ -46,54 +37,35 @@ int findBuiltin(_builtins_t b[], char *cmd)
 	return (0);
 }
 
-void runCd()
+int main(int argc, char **argv, char **env)
 {
-	printf("runCd():\n");
-}
-
-void runEnv()
-{
-	printf("runEnv():\n");
-}
-
-void runExit()
-{
-	printf("runExit():\n");
-}
-
-void runHelp()
-{
-	printf("runHelp():\n");
-}
-
-void runHistory()
-{
-	printf("runHistory():\n");
-}
-
-void runSetenv()
-{
-	printf("runSetenv():\n");
-}
-
-void runUnsetenv()
-{
-	printf("runUnsetenv():\n");
-}
-
-
-int main()
-{
+	general_t *genHead = NULL;
+	list_t *l = NULL;
+	char *test1, *test2, *test3;
+	char **_env = NULL;
 	int test = 0;
-
 	_builtins_t *b;
 	char *c = "unsetenv";
+
+	genHead = initStruct();
+	if (genHead == NULL)
+		return(0);
+	test1 = malloc(100 * sizeof(char));
+	test2 = malloc(100 * sizeof(char));
+	test3 = malloc(100 * sizeof(char));
+	addMemAddress(genHead, (void *)test1);
 
 	b = initBuiltins();
 	test = findBuiltin(b, c);
 	if (test == 0)
 		printf("Didn't find command\n");
 
+	printList(genHead);
+
 	free(b);
+	freeList(genHead);
+	freeStruct(genHead);
+	genHead = NULL;
+
 	return(0);
 }

@@ -1,5 +1,6 @@
 #ifndef HSH_H
 #define HSH_H
+#define ENVSIZE 4000
 
 /**
  * struct list_s - singly linked list
@@ -21,10 +22,10 @@ typedef struct list_s
  */
 typedef struct general_s
 {
+	char **_env;
 	unsigned int nCommands;
 	list_t *head;
 } general_t;
-
 
 general_t *initStruct(void);
 int addMemAddress(general_t *genHead, void *ptr);
