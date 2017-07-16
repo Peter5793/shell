@@ -10,7 +10,9 @@
 #include <sys/stat.h>
 #include <string.h>
 
-int interactiveShell();
+#include "hsh.h"
+
+int interactiveShell(char **env);
 int nonInteractiveShell(char *buffer);
 char **tokenize(char *str, char delim[]);
 unsigned int _strlen(const char *str);
@@ -26,5 +28,6 @@ size_t correctAbsPath(char *token);
 char *findCmd(char *b);
 int createFork(char **bufferTokens);
 char *createCWDFile(char *file);
+char *_getenv(char *name);
 
 #endif /* SHAKEUP */

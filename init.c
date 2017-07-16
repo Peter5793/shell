@@ -1,54 +1,52 @@
+#include "shakeup.h"
+
 _builtins_t *initBuiltins(void)
 {
-	int numCommands = 8;
+	int numCommands = 5;
 	_builtins_t *b;
 
 	b = malloc(numCommands * sizeof(_builtins_t));
 	if (b == NULL)
 		return (NULL);
-	b[0].command = "cd";
-	b[0].f = (void *)runCd;
-        b[1].command = "env";
-        b[1].f = (void *)runEnv;
-        b[2].command = "exit";
-        b[2].f = (void *)runExit;
-        b[3].command = "help";
-        b[3].f = (void *)runHelp;
-        b[4].command = "history";
-        b[4].f = (void *)runHistory;
-        b[5].command = "setenv";
-        b[5].f = (void *)runSetenv;
-        b[6].command = "unsetenv";
-        b[6].f = (void *)runUnsetenv;
-	b[7].command = NULL;
-	b[7].f = NULL;
+        b[0].command = "env";
+        b[0].f = runEnv;
+        b[1].command = "exit";
+        b[1].f = runExit;
+        b[2].command = "setenv";
+        b[2].f = runSetenv;
+        b[3].command = "unsetenv";
+        b[3].f = runUnsetenv;
+	b[4].command = NULL;
+	b[4].f = NULL;
         return (b);
 }
 
-general_t *initStruct(void)
+general_t *initStruct(char **env)
 {
-	general_t *main;
+	general_t *uno;
 	char **e = NULL;
-	int i;
+	int i = 0;
 
-	main = malloc(sizeof(general_t));
-	if(main == NULL)
+	uno = malloc(sizeof(general_t));
+	if (uno == NULL)
 	{
 		perror("main struct failed");
-		return(NULL);
+		return (NULL);
 	}
 
 	e = malloc(ENVSIZE * sizeof(char));
 	if (e == NULL)
-		return (NULL);
-	while(envir[i])
 	{
-		e[i] = envir[i];
-		printf("old:%s\nnew:%s\n", envir[i], e[i]);
+		perror("Environment malloc failed");
+		return (NULL);
+	}
+	while(env[i])
+	{
+		e[i] = env[i];
 		i++;
 	}
 
-	main->nCommands = 0;
-	main->head = NULL;
-	return (main);
+	uno->nCommands = 0;
+	uno->head = NULL;
+	return (uno);
 }

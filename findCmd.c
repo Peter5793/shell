@@ -1,30 +1,5 @@
 #include "shakeup.h"
 
-extern char **environ;
-
-char *_getenv(const char *name)
-{
-	int i = 0, j;
-	char *token;
-
-	token = strtok(&(environ[0][0]), "=");
-
-	while (environ[i])
-	{
-		if (_strcmp(token, name) == 0)
-		{
-			for(j = 0; environ[i - 1][j]; j++)
-				;
-			environ[i - 1][j] = '=';
-			return (environ[i - 1]);
-		}
-		token = strtok(&(environ[i][0]), "=");
-		i++;
-	}
-
-	return(NULL);
-}
-
 char *findCmd(char *b)
 {
 	char *hshPath, *tmpPath, *token, *slash = "/", *t = NULL;
@@ -57,20 +32,3 @@ char *findCmd(char *b)
 		return (NULL);
 	return (t);
 }
-
-/*
-int main(void)
-{
-        char *buffer, **tokens;
-        size_t len = 300, i;
-
-        buffer = mallocBuffer(len);
-        getUserInput(&buffer, &len);
-        tokens = parseBuffer(buffer);
-	tokens[0] = findCmd(tokens[0]);
-
-	for (i = 0; tokens[i]; i++)
-		printf("Token %zu: %s, address: %p\n", i, tokens[i], (void *)tokens[i]);
-        return (0);
-}
-*/

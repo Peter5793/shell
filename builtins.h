@@ -9,16 +9,13 @@
 typedef struct _builtins_s
 {
 	char *command;
-	int (*f)();
+	void (*f)();
 } _builtins_t;
 
 _builtins_t *initBuiltins(void);
-int findBuiltin(_builtins_t *b, char *cmd);
-void runCd();
+void findBuiltin(_builtins_t *b, char *cmd);
 void runEnv();
 void runExit();
-void runHelp();
-void runHistory();
 void runSetenv();
 void runUnsetenv();
 
