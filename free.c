@@ -1,3 +1,5 @@
+#include "shakeup.h"
+
 /**
  * freeList - free list_t list
  * @genHead: pointer to new list node

@@ -2,6 +2,7 @@
 #define HSH_H
 #define ENVSIZE 4000
 
+#include "builtins.h"
 /**
  * struct list_s - singly linked list
  * @data: address to malloc'ed memory
@@ -23,11 +24,12 @@ typedef struct list_s
 typedef struct general_s
 {
 	char **_env;
+	_builtins_t *builtins;
 	unsigned int nCommands;
 	list_t *head;
 } general_t;
 
-general_t *initStruct(void);
+general_t *initStruct(char **env);
 int addMemAddress(general_t *genHead, void *ptr);
 list_t *addNodeEnd(list_t **head, void *ptr);
 void freeList(general_t *genHead);

@@ -22,50 +22,14 @@ char **initEnv(char **envir)
 }
 */
 
-int findBuiltin(_builtins_t b[], char *cmd)
+void findBuiltin(_builtins_t b[], char *cmd)
 {
 	int i = 0;
 
 	while (b[i].command)
 	{
 		if (_strcmp(cmd, b[i].command) == 0)
-		{
-			return (b[i].f());
-		}
+		       b[i].f();
 		i++;
 	}
-	return (0);
-}
-
-int main(int argc, char **argv, char **env)
-{
-	general_t *genHead = NULL;
-	list_t *l = NULL;
-	char *test1, *test2, *test3;
-	char **_env = NULL;
-	int test = 0;
-	_builtins_t *b;
-	char *c = "unsetenv";
-
-	genHead = initStruct();
-	if (genHead == NULL)
-		return(0);
-	test1 = malloc(100 * sizeof(char));
-	test2 = malloc(100 * sizeof(char));
-	test3 = malloc(100 * sizeof(char));
-	addMemAddress(genHead, (void *)test1);
-
-	b = initBuiltins();
-	test = findBuiltin(b, c);
-	if (test == 0)
-		printf("Didn't find command\n");
-
-	printList(genHead);
-
-	free(b);
-	freeList(genHead);
-	freeStruct(genHead);
-	genHead = NULL;
-
-	return(0);
 }
