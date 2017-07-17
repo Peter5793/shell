@@ -7,6 +7,7 @@ int interactiveShell(char **env, general_t *genHead)
 
 	while (1)
 	{
+		genHead->nCommands++;
 		printPrompt("shakeup$ ");
 		buffer = getUserInput(buffer, &len);
 		bufferTokens = parseBuffer(buffer, genHead);
