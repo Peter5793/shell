@@ -3,10 +3,12 @@
 int interactiveShell(char **env, general_t *genHead)
 {
 	char **bufferTokens, *buffer = NULL;
+	char *tmp;
 	size_t len;
 
 	while (1)
 	{
+		genHead->nCommands++;
 		printPrompt("shakeup$ ");
 		buffer = getUserInput(buffer, &len);
 		bufferTokens = parseBuffer(buffer, genHead);
@@ -15,7 +17,9 @@ int interactiveShell(char **env, general_t *genHead)
 			createFork(bufferTokens, genHead);
 		else
 		{
-			bufferTokens[0] = findCmd(bufferTokens[0], genHead);
+			tmp = findCmd(bufferTokens[0], genHead);
+			if(tmp != NULL)
+				bufferTokens[0] = tmp;
 			createFork(bufferTokens, genHead);
 		}
 	}
