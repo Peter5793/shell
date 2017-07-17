@@ -64,6 +64,7 @@ unsigned int _strlen(const char *str);
 char *_strdup(const char *s, general_t *genHead);
 char *__strcat(char *dest, char *source);
 int _strcmp(char *s1, char *s2);
+char *_itoa(unsigned int num);
 
 char *getUserInput(char *buffer, size_t *length);
 int checkEOF(char *buffer);

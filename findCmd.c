@@ -2,18 +2,22 @@
 
 char *findCmd(char *b, general_t *genHead)
 {
-	char *hshPath, *tmpPath, *token, *slash = "/", *t = NULL;
+	char *hshPath, *tmpPath, *token, *slash = "/", *t = NULL, *tmpToken;
 	struct stat st;
-	int count1;
+	int count1 = 0;
 
 	hshPath = _getenv(HSHPATH);
 
 	tmpPath = malloc(_strlen(hshPath) * sizeof(char));
 	if (tmpPath == NULL)
 		return (NULL);
-	addMemAddress(genHead, (void *)tmpPath);
-
 	tmpPath = __strcat(tmpPath, hshPath);
+
+	tmpToken = malloc(_strlen(b) * sizeof(char));
+	if(tmpToken == NULL)
+		return (NULL);
+	addMemAddress(genHead, (void *)tmpToken);
+	tmpToken = __strcat(tmpToken, b);
 
 	token = strtok(tmpPath, "="); /*remove PATH text*/
 	for(token = strtok(NULL, ":"); token != NULL; token = strtok(NULL, ":"))
@@ -36,7 +40,7 @@ char *findCmd(char *b, general_t *genHead)
 		}
 	}
 	free(tmpPath);
-	if(token == NULL)
-		return (NULL);
-	return (t);
+/*	if(token == NULL)
+	return (NULL);*/
+	return (tmpToken);
 }
