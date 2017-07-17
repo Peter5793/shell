@@ -37,6 +37,7 @@ void freeList(general_t *genHead)
 void freeStruct(general_t *genHead)
 {
 	list_t *node;
+	int i = 0;
 
 	if ((genHead == NULL) || (genHead->head = NULL))
 		return;
@@ -49,6 +50,12 @@ void freeStruct(general_t *genHead)
 		genHead->head = node;
 	}
 
+	while(genHead->_env[i] != NULL)
+	{
+		free(genHead->_env[i]);
+		i++;
+	}
 	free(genHead->_env);
+
 	free(genHead->builtins);
 }
