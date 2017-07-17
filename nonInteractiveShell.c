@@ -6,11 +6,11 @@ int nonInteractiveShell(char *buffer, general_t *genHead)
 
 	bufferTokens = parseBuffer(buffer, genHead);
 	if (correctAbsPath(bufferTokens[0]))
-		createFork(bufferTokens);
+		createFork(bufferTokens, genHead);
 	else
 	{
 		bufferTokens[0] = findCmd(bufferTokens[0], genHead);
-		createFork(bufferTokens);
+		createFork(bufferTokens, genHead);
 	}
 	return (0);
 }

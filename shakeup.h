@@ -72,7 +72,7 @@ char **parseBuffer(char *buffer, general_t *genHead);
 void printPrompt(char *prompt);
 size_t correctAbsPath(char *token);
 char *findCmd(char *b, general_t *genHead);
-int createFork(char **bufferTokens);
+int createFork(char **bufferTokens, general_t *genHead);
 char *createCWDFile(char *file);
 
 char *_getenv(char *name);

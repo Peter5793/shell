@@ -1,6 +1,6 @@
 #include "shakeup.h"
 
-int createFork(char **bufferTokens)
+int createFork(char **bufferTokens, general_t *genHead)
 {
 	pid_t child_pid;
 	int status;

@@ -37,25 +37,22 @@ void freeList(general_t *genHead)
 void freeStruct(general_t *genHead)
 {
 	list_t *node;
-	int i = 0;
 
-	if ((genHead == NULL) || (genHead->head = NULL))
+	if ((genHead == NULL) || (genHead->head == NULL))
 		return;
 	/*free memory pointed to by data*/
 	while (genHead->head != NULL)
 	{
 		node = genHead->head->next;
-		free(genHead->head->data);
-		free(genHead->head);
-		genHead->head = node;
+		if(genHead->head != NULL)
+		{
+			free(genHead->head);
+			genHead->head = node;
+		}
 	}
 
-	while(genHead->_env[i] != NULL)
-	{
-		free(genHead->_env[i]);
-		i++;
-	}
 	free(genHead->_env);
 
 	free(genHead->builtins);
+	free(genHead);
 }
