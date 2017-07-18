@@ -42,6 +42,7 @@ typedef struct _builtins_s
  */
 typedef struct general_s
 {
+	unsigned int isInteractive;
 	char **_env;
 	_builtins_t *builtins;
 	unsigned int nCommands;
@@ -57,7 +58,7 @@ list_t *addNode(list_t **head, void *ptr);
 size_t printList(general_t *genHead);
 char *mallocBuffer(size_t length, general_t *genHead);
 
-int interactiveShell(char **env, general_t *genHead);
+int interactiveShell(general_t *genHead);
 int nonInteractiveShell(char *buffer, general_t *genHead);
 char **tokenize(char *str, char delim[], general_t *genHead);
 unsigned int _strlen(const char *str);

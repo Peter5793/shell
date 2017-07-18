@@ -1,6 +1,6 @@
 #include "shakeup.h"
 
-int interactiveShell(char **env, general_t *genHead)
+int interactiveShell(general_t *genHead)
 {
 	char **bufferTokens, *buffer = NULL;
 	char *tmp;
@@ -18,7 +18,7 @@ int interactiveShell(char **env, general_t *genHead)
 		else
 		{
 			tmp = findCmd(bufferTokens[0], genHead);
-			if(tmp != NULL)
+			if (tmp)
 				bufferTokens[0] = tmp;
 			createFork(bufferTokens, genHead);
 		}
