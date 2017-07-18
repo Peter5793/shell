@@ -4,7 +4,7 @@
 int createFork(char **bufferTokens, general_t *genHead)
 {
 	pid_t child_pid;
-	int status;
+	int status, i, j;
 	char *tmp = NULL, *tmpNum = NULL;
 
 	child_pid = fork();
@@ -31,6 +31,18 @@ int createFork(char **bufferTokens, general_t *genHead)
 		}
 	}
 	else
+	{
 		wait(&status);
+		if (!genHead->isInteractive)
+		{
+			freeStruct(genHead);
+			for (i = 0; bufferTokens[i]; i++)
+			{
+				for (j = 0; bufferTokens[i][j]; j++)
+					bufferTokens[i][j] = 0;
+			}
+			bufferTokens = 0;
+		}
+	}
 	return (0);
 }

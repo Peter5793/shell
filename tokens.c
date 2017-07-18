@@ -7,13 +7,13 @@ char **tokenize(char *str, char *delim, general_t *genHead)
 	int i = 0;
 
 	current = strtok(str, delim);
-	tokens = malloc(10 * sizeof(char *));
+	tokens = malloc(50 * sizeof(char *));
 	if (tokens == NULL)
 		return (NULL);
 	addMemAddress(genHead, (void *)tokens);
 	for (i = 0; i < 10; i++)
 	{
-		tokens[i] = malloc(30 * sizeof(char));
+		tokens[i] = malloc(100 * sizeof(char));
 		if (tokens[i] == NULL)
 		{
 			if (i != 0)

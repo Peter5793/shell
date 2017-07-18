@@ -1,2 +1,0 @@
-#!/bin/bash
-gcc -g -Wall -Werror -pedantic simpleShell.c nonInteractiveShell.c currentInteractiveShell.c prompt.c strgen.c strmod.c itoa.c buffer.c tokens.c path.c fork.c findCmd.c builtins.c init.c free.c exit.c environment.c linkedList.c -o hsh
