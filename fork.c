@@ -4,7 +4,7 @@
 int createFork(char **bufferTokens, general_t *genHead)
 {
 	pid_t child_pid;
-	int status, i, j;
+	int status;
 	char *tmp = NULL, *tmpNum = NULL;
 
 	child_pid = fork();
@@ -20,7 +20,7 @@ int createFork(char **bufferTokens, general_t *genHead)
 	addMemAddress(genHead, (void *)tmp);
 	if (child_pid == 0)
 	{
-		if (execve(bufferTokens[0], bufferTokens, NULL) == -1)
+		if (execve(bufferTokens[0], bufferTokens, genHead->_env) == -1)
 		{
 			tmpNum = _itoa(genHead->nCommands);
 			write(1, "hsh: ", 5);
@@ -34,15 +34,7 @@ int createFork(char **bufferTokens, general_t *genHead)
 	{
 		wait(&status);
 		if (!genHead->isInteractive)
-		{
 			freeStruct(genHead);
-			for (i = 0; bufferTokens[i]; i++)
-			{
-				for (j = 0; bufferTokens[i][j]; j++)
-					bufferTokens[i][j] = 0;
-			}
-			bufferTokens = 0;
-		}
 	}
 	return (0);
 }
