@@ -1,5 +1,11 @@
 #include "shakeup.h"
-
+/**
+ * tokenize - tokenize raw user's data
+ * @str: user's raw data
+ * @delim: delimiters for user's raw input
+ * @genHead: general struct
+ * Return: string of tokens from users input
+ */
 char **tokenize(char *str, char *delim, general_t *genHead)
 {
 	char *current;
