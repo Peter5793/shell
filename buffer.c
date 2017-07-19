@@ -1,5 +1,10 @@
 #include "shakeup.h"
-
+/**
+ * mallocBuffer - creates memory space as requested
+ * @length: length of requested buffer size
+ * @genHead: main struct for vars
+ * Return: pointer to new memory
+ */
 char *mallocBuffer(size_t length, general_t *genHead)
 {
 	char *buf;
@@ -8,9 +13,14 @@ char *mallocBuffer(size_t length, general_t *genHead)
 	if (buf == NULL)
 		perror("Couldn't malloc the buffer to get user input");
 	addMemAddress(genHead, (void *)buf);
-        return (buf);
+	return (buf);
 }
-
+/**
+ * getUserInput - gets user input from shell
+ * @buffer: where user's input is stored
+ * @length: length of user's input
+ * Return: pointer to user's input line
+ */
 char *getUserInput(char *buffer, size_t *length)
 {
 	ssize_t chars_read;
@@ -30,7 +40,11 @@ char *getUserInput(char *buffer, size_t *length)
 	}
 	return (buffer);
 }
-
+/**
+ * checkEOF - check for End-Of-File character
+ * @buffer: user's input
+ * Return: length of buffer or -1 if error
+ */
 int checkEOF(char *buffer)
 {
 	unsigned int len;
@@ -40,58 +54,16 @@ int checkEOF(char *buffer)
 		return (0);
 	return (-1);
 }
-
+/**
+ * parseBuffer - parse user's input
+ * @buffer: user's raw input
+ * @genHead: main struct for vars
+ * Return: tokenized string of user's input
+ */
 char **parseBuffer(char *buffer, general_t *genHead)
 {
 	char *delim = " \t\r\n";
-
 	char **tokens = tokenize(buffer, delim, genHead);
+
 	return (tokens);
 }
-
-/*
-// parse buffer
-int main(void)
-{
-	char *buffer, **tokens;
-	size_t len = 300, i;
-	int eof = -1;
-
-	buffer = mallocBuffer(len);
-	getUserInput(&buffer, &len);
-	tokens = parseBuffer(buffer);
-	printf("Tokens double pointer: %p\n", (void *)tokens);
-	for (i = 0; tokens[i]; i++)
-		printf("Token %zu: %s, address: %p\n", i, tokens[i], (void *)tokens[i]);
-	printf("NULL Buffer: %p\n", (void *)buffer);
-	return (0);
-}
-*/
-
-/*
-// malloc buffer
-int main(void)
-{
-	char *buffer;
-	size_t len = 300;
-
-	buffer = mallocBuffer(len);
-	printf("Address: %p\n", (void *)buffer);
-	printf("Contents: %s %zu\n", buffer, sizeof(buffer));
-	return (0);
-}
-*/
-
-/*
-// get user input
-int main(void)
-{
-	char *buffer;
-	size_t len = 300;
-
-	buffer = mallocBuffer(len);
-	getUserInput(&buffer, &len);
-	printf("User input: %s", buffer);
-	return (0);
-}
-*/
