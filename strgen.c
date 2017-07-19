@@ -7,7 +7,6 @@
  * Return: Length
  *
  */
-
 unsigned int _strlen(const char *str)
 {
 	unsigned int length = 0;
@@ -22,11 +21,10 @@ unsigned int _strlen(const char *str)
 /**
  * _strdup - Duplicate a string
  * @s: The string to duplicate
- *
+ * @genHead: general struct
  * Return: Pointer to duplicate string
  *
  */
-
 char *_strdup(const char *s, general_t *genHead)
 {
 	char *result;

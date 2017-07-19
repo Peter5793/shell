@@ -1,5 +1,11 @@
 #include "shakeup.h"
-
+/**
+ * main - hsh simple shell program
+ * @argc: number of arguments sent to main program
+ * @argv: string of input from users
+ * @env: shell environment variables
+ * Return: Always 0
+ */
 int main(int argc, char **argv, char **env)
 {
 	char *buf;

@@ -4,8 +4,8 @@
  * printPrompt - Prints the prompt
  * @prompt: The prompt to print
  *
+ * Return: none
  */
-
 void printPrompt(char *prompt)
 {
 	unsigned int length;
@@ -13,11 +13,3 @@ void printPrompt(char *prompt)
 	length = _strlen(prompt);
 	write(1, prompt, (size_t)length);
 }
-
-/*
-int main(void)
-{
-	printPrompt("shakeup$");
-	return (0);
-}
-*/

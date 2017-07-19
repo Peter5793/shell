@@ -2,12 +2,9 @@
 
 /**
  * __strcat - Concatenate two strings
- *
  * @dest: The string to concat to
- * @source: The string to add from
- *
+ * @src: The string to add from
  * Return: Pointer to dest string
- *
  */
 char *__strcat(char *dest, char *src)
 {
