@@ -1,6 +1,11 @@
 #include "shakeup.h"
 #include "errno.h"
-
+/**
+ * createFork - run the user's command with fork and execve
+ * @bufferTokens: user's command properly formatted
+ * @genHead: general struct
+ * Return: Always 0
+ */
 int createFork(char **bufferTokens, general_t *genHead)
 {
 	pid_t child_pid;

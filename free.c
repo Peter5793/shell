@@ -12,16 +12,16 @@ void freeEnv(general_t *genHead)
 
 /**
  * freeList - free list_t list
- * @genHead: pointer to new list node
+ * @genHead: pointer to new linked list node
  * Return: none
  */
 void freeList(general_t *genHead)
 {
 	list_t *node;
 
-	if ((genHead == NULL) || (genHead->head = NULL))
+	if ((genHead == NULL) || (genHead->head == NULL))
 		return;
-        while (genHead->head != NULL)
+	while (genHead->head != NULL)
 	{
 		node = genHead->head->next;
 		free(genHead->head);
@@ -44,7 +44,7 @@ void freeStruct(general_t *genHead)
 	while (genHead->head != NULL)
 	{
 		node = genHead->head->next;
-		if(genHead->head != NULL)
+		if (genHead->head != NULL)
 		{
 			free(genHead->head);
 			genHead->head = node;

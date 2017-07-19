@@ -1,5 +1,10 @@
 #include "shakeup.h"
-
+/**
+ * findCmd - finds the command in the possible paths from the PATH env var
+ * @b: buffer of entir PATH environment variable
+ * @genHead: general struct
+ * Return: string that returns PATH concatenated with command if found
+ */
 char *findCmd(char *b, general_t *genHead)
 {
 	char *hshPath, *tmpPath, *token, *slash = "/", *t = NULL, *tmpToken;
@@ -14,18 +19,18 @@ char *findCmd(char *b, general_t *genHead)
 	tmpPath = __strcat(tmpPath, hshPath);
 
 	tmpToken = malloc(_strlen(b) * sizeof(char));
-	if(tmpToken == NULL)
+	if (tmpToken == NULL)
 		return (NULL);
 	addMemAddress(genHead, (void *)tmpToken);
 	tmpToken = __strcat(tmpToken, b);
 
 	token = strtok(tmpPath, "="); /*remove PATH text*/
-	for(token = strtok(NULL, ":"); token != NULL; token = strtok(NULL, ":"))
+	for (token = strtok(NULL, ":"); token != NULL; token = strtok(NULL, ":"))
 	{
 		count1 = _strlen(token) + _strlen(slash) + _strlen(b) + 1;
 
 		t = malloc(count1 * sizeof(char));
-		if(t == NULL)
+		if (t == NULL)
 			return (NULL);
 		addMemAddress(genHead, (void *)t);
 
@@ -40,7 +45,5 @@ char *findCmd(char *b, general_t *genHead)
 		}
 	}
 	free(tmpPath);
-/*	if(token == NULL)
-	return (NULL);*/
 	return (tmpToken);
 }
