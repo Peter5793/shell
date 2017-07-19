@@ -12,7 +12,7 @@ int addMemAddress(general_t *genHead, void *ptr)
 		return (-1);
 
 	addNodeEnd(&(genHead->head), ptr);
-	return(0);
+	return (0);
 }
 
 /**
@@ -61,7 +61,6 @@ size_t printList(general_t *genHead)
 
 	while (genHead->head)
 	{
-/*		printf("%d:%p:%s\n", count, genHead->head->data, (char *)(genHead->head->data));*/
 		count++;
 		genHead->head = genHead->head->next;
 	}
@@ -98,45 +97,3 @@ list_t *addNode(list_t **head, void *ptr)
 
 	return (newnode);
 }
-
-/**
- * main - check the code for Holberton School students.
- *
- * Return: Always 0.
- */
-/*
-int main(void)
-{
-	general_t *genHead = NULL;
-	list_t *l = NULL;
-	char *test1, *test2, *test3;
-
-	genHead = initStruct();
-	if (genHead == NULL)
-		return(0);
-
-	test1 = malloc(100 * sizeof(char));
-	test2 = malloc(100 * sizeof(char));
-	test3 = malloc(100 * sizeof(char));
-
-	__strcat(test1,"hello");
-	__strcat(test2, "world");
-	__strcat(test3, "holberton");
-
-	printf("test1:%p %s\n", (void *)test1, test1);
-	printf("test2:%p %s\n", (void *)test2, test2);
-	printf("test3:%p %s\n", (void *)test3, test3);
-
-	if (addMemAddress(genHead, (void *)test1))
-		printf("Added ptr:%s\n", test1);
-	addMemAddress(genHead, (void *)test2);
-	addMemAddress(genHead, (void *)test3);
-
-	printList(genHead);
-	freeList(genHead);
-	freeStruct(genHead);
-	genHead = NULL;
-
-	return (0);
-}
-*/

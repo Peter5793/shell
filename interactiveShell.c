@@ -1,5 +1,9 @@
 #include "shakeup.h"
-
+/**
+ * interactiveShell - processes all interactive shell commands
+ * @genHead: general struct
+ * Return: Always 0.
+ */
 int interactiveShell(general_t *genHead)
 {
 	char **bufferTokens, *buffer = NULL;
