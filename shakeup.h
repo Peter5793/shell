@@ -1,7 +1,7 @@
 #ifndef SHAKEUP
 #define SHAKEUP
 #define HSHPATH "PATH"
-#define ENVSIZE 4000
+#define ENVSIZE 50
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -12,28 +12,15 @@
 #include <string.h>
 
 /**
- * struct list_s - singly linked list
- * @data: address to malloc'ed memory
- * @next: points to the next node in linked list
- *
- * Description: singly linked list node structure
- */
-typedef struct list_s
-{
-	void *data;
-	struct list_s *next;
-} list_t;
-
-/**
- * struct _builtins_s - struct for matching command lines with functions
+ * struct builtins_s - struct for matching command lines with functions
  * @command: builtin command
  * @f: associated function
  */
-typedef struct _builtins_s
+typedef struct builtins_s
 {
 	char *command;
 	void (*f)();
-} _builtins_t;
+} builtins_t;
 
 /**
  * struct general_s - struct for shell
@@ -46,36 +33,33 @@ typedef struct _builtins_s
 typedef struct general_s
 {
 	unsigned int isInteractive;
-	char **_env;
-	_builtins_t *builtins;
 	unsigned int nCommands;
-	list_t *head;
+	char **_env;
+	char **bufferTokens;
+	char *nonInteractiveBuffer;
+	char *interactiveBuffer;
+	builtins_t *builtins;
 } general_t;
 
-_builtins_t *initBuiltins(general_t *genHead);
-general_t *initStruct(char **env, general_t *genHead);
-int addMemAddress(general_t *genHead, void *ptr);
-list_t *addNodeEnd(list_t **head, void *ptr);
-list_t *addNode(list_t **head, void *ptr);
-size_t printList(general_t *genHead);
+builtins_t *initBuiltins(general_t *genHead);
+general_t *initStruct(char **env);
 char *mallocBuffer(size_t length, general_t *genHead);
 
 int interactiveShell(general_t *genHead);
 int nonInteractiveShell(char *buffer, general_t *genHead);
 char **tokenize(char *str, char delim[], general_t *genHead);
 unsigned int _strlen(const char *str);
-char *_strdup(const char *s, general_t *genHead);
 char *__strcat(char *dest, char *source);
 int _strcmp(char *s1, char *s2);
+void _strcpy(char *dest, char *src);
 char *_itoa(unsigned int num);
 
 char *getUserInput(char *buffer, size_t *length, general_t *genHead);
-int checkEOF(char *buffer);
 char **parseBuffer(char *buffer, general_t *genHead);
 
 void printPrompt(char *prompt);
 size_t correctAbsPath(char *token);
-char *findCmd(char *b, general_t *genHead);
+char *findCmd(char *b);
 int createFork(char **bufferTokens, general_t *genHead);
 char *createCWDFile(char *file);
 
@@ -85,8 +69,18 @@ void runEnv(general_t *genHead);
 void runExit(general_t *genHead);
 void runSetenv(void);
 void runUnsetenv(void);
-void freeEnv(general_t *genHead);
-void freeList(general_t *genHead);
+
 void freeStruct(general_t *genHead);
+void freeEnv(general_t *genHead);
+void freeBufferTokens(general_t *genHead);
+void freeBuffer(char *buf);
+void freeBuiltins(general_t *genHead);
+
+void addMemNIBuffer(general_t *genHead, char *buf);
+void addMemIBuffer(general_t *genHead, char *buf);
+void addMemEnvBuffer(general_t *genHead, char **env);
+void addMemBuiltins(general_t *genHead, builtins_t *builtins);
+void addMemEnv(general_t *genHead, char **env);
+void addMemBufferTokens(general_t *genHead, char **tokens);
 
 #endif

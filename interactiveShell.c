@@ -1,3 +1,4 @@
+
 #include "shakeup.h"
 /**
  * interactiveShell - processes all interactive shell commands
@@ -21,11 +22,12 @@ int interactiveShell(general_t *genHead)
 			createFork(bufferTokens, genHead);
 		else
 		{
-			tmp = findCmd(bufferTokens[0], genHead);
+			tmp = findCmd(bufferTokens[0]);
 			if (tmp)
 				bufferTokens[0] = tmp;
 			createFork(bufferTokens, genHead);
 		}
 	}
+	freeStruct(genHead);
 	return (0);
 }

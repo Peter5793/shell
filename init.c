@@ -1,18 +1,19 @@
 #include "shakeup.h"
+
 /**
  * initBuiltins - initialize Builtin struct
  * @genHead: general struct
  * Return: initialized builtin struct
  */
-_builtins_t *initBuiltins(general_t *genHead)
+builtins_t *initBuiltins(general_t *genHead)
 {
 	int numCommands = 5;
-	_builtins_t *b;
+	builtins_t *b;
 
-	b = malloc(numCommands * sizeof(_builtins_t));
+	b = malloc(numCommands * sizeof(builtins_t));
 	if (b == NULL)
 		return (NULL);
-	addMemAddress(genHead, (void *)b);
+	addMemBuiltins(genHead, b);
 
 	b[0].command = "env";
 	b[0].f = runEnv;
@@ -32,33 +33,42 @@ _builtins_t *initBuiltins(general_t *genHead)
  * @genHead: general struct
  * Return: initialized general struct
  */
-general_t *initStruct(char **env, general_t *genHead)
+general_t *initStruct(char **env)
 {
-	general_t *uno;
+	general_t *universal;
 	int i = 0;
+	unsigned int str_len;
+	char **new_env;
 
-	uno = malloc(sizeof(general_t));
-	if (uno == NULL)
+	universal = malloc(sizeof(general_t));
+	if (universal == NULL)
 	{
 		perror("main struct failed");
 		return (NULL);
 	}
-	addMemAddress(genHead, (void *)uno);
-
-	uno->_env = malloc(ENVSIZE * sizeof(char));
-	if (uno->_env == NULL)
+	new_env = malloc(ENVSIZE * sizeof(char *));
+	if (new_env == NULL)
 	{
 		perror("Environment malloc failed");
-		return (NULL);
+		exit(12);
 	}
-	addMemAddress(genHead, (void *)uno->_env);
+	addMemEnv(universal, new_env);
 	while (env[i])
 	{
-		uno->_env[i] = env[i];
+		str_len = _strlen(env[i]);
+		new_env[i] = malloc(++str_len * sizeof(char));
+		if (new_env[i] == NULL)
+		{
+			if (i != 0)
+				i--;
+			for (; i >= 0; i--)
+				free(new_env[i]);
+			free(new_env);
+			exit(12);
+		}
+		_strcpy(new_env[i], env[i]);
 		i++;
 	}
-
-	uno->nCommands = 0;
-	uno->head = NULL;
-	return (uno);
+	universal->nCommands = 0;
+	return (universal);
 }

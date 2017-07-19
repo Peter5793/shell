@@ -16,7 +16,7 @@ char **tokenize(char *str, char *delim, general_t *genHead)
 	tokens = malloc(50 * sizeof(char *));
 	if (tokens == NULL)
 		return (NULL);
-	addMemAddress(genHead, (void *)tokens);
+	addMemBufferTokens(genHead, tokens);
 	for (i = 0; i < 10; i++)
 	{
 		tokens[i] = malloc(100 * sizeof(char));

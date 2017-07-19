@@ -19,32 +19,6 @@ unsigned int _strlen(const char *str)
 }
 
 /**
- * _strdup - Duplicate a string
- * @s: The string to duplicate
- * @genHead: general struct
- * Return: Pointer to duplicate string
- *
- */
-char *_strdup(const char *s, general_t *genHead)
-{
-	char *result;
-	unsigned int i, len;
-
-	if (!s)
-		return (NULL);
-	len = _strlen(s);
-	result = malloc(++len * sizeof(char));
-	if (result == NULL)
-		return (NULL);
-	addMemAddress(genHead, (void *)result);
-
-	for (i = 0; s[i]; i++)
-		result[i] = s[i];
-	result[i] = '\0';
-	return (result);
-}
-
-/**
  * _strcmp - compares 2 strings
  * @s1: first string to compare
  * @s2: second string to compare
@@ -60,4 +34,22 @@ int _strcmp(char *s1, char *s2)
 			return (0);
 	}
 	return (s1[i] - s2[i]);
+}
+
+/**
+ * _strcpy - Copies one string to another
+ * @dest: The string to copy to
+ * @src: The string to copy from
+ *
+ * Return: The dest string
+ */
+void _strcpy(char *dest, char *src)
+{
+	unsigned int i;
+
+	if (dest == NULL || src == NULL)
+		return;
+	for (i = 0; src[i]; i++)
+		dest[i] = src[i];
+	dest[i] = '\0';
 }

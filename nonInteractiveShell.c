@@ -17,7 +17,7 @@ int nonInteractiveShell(char *buffer, general_t *genHead)
 		createFork(bufferTokens, genHead);
 	else
 	{
-		tmp = findCmd(bufferTokens[0], genHead);
+		tmp = findCmd(bufferTokens[0]);
 		if (tmp)
 			bufferTokens[0] = tmp;
 		createFork(bufferTokens, genHead);

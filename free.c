@@ -7,26 +7,50 @@
  */
 void freeEnv(general_t *genHead)
 {
+	unsigned int i;
+
+	for (i = 0; genHead->_env[i]; i++)
+		free(genHead->_env[i]);
 	free(genHead->_env);
 }
 
 /**
- * freeList - free list_t list
- * @genHead: pointer to new linked list node
- * Return: none
+ * freeBufferTokens - Frees all buffer tokens
+ * @genHead: Pointer to main struct
+ *
+ * Return: None
  */
-void freeList(general_t *genHead)
+void freeBufferTokens(general_t *genHead)
 {
-	list_t *node;
+	unsigned int i;
 
-	if ((genHead == NULL) || (genHead->head == NULL))
+	for (i = 0; genHead->bufferTokens[i]; i++)
+		free(genHead->bufferTokens[i]);
+	free(genHead->bufferTokens);
+}
+
+/**
+ * freeBuffer - Frees interactive and non-interactive buffer
+ * @buf: The char pointer(s) in gen struct
+ *
+ * Return: None
+ */
+void freeBuffer(char *buf)
+{
+	if (buf == NULL)
 		return;
-	while (genHead->head != NULL)
-	{
-		node = genHead->head->next;
-		free(genHead->head);
-		genHead->head = node;
-	}
+	free(buf);
+}
+
+/**
+ * freeBuiltins - Frees all of the builtins
+ * @genHead: The general struct
+ *
+ * Return: None
+ */
+void freeBuiltins(general_t *genHead)
+{
+	free(genHead->builtins);
 }
 
 /**
@@ -36,23 +60,10 @@ void freeList(general_t *genHead)
  */
 void freeStruct(general_t *genHead)
 {
-	list_t *node;
-
-	if ((genHead == NULL) || (genHead->head == NULL))
+	if (genHead == NULL)
 		return;
-	/*free memory pointed to by data*/
-	while (genHead->head != NULL)
-	{
-		node = genHead->head->next;
-		if (genHead->head != NULL)
-		{
-			free(genHead->head);
-			genHead->head = node;
-		}
-	}
-
-	free(genHead->_env);
-
-	free(genHead->builtins);
+	freeEnv(genHead);
+	freeBufferTokens(genHead);
+	freeBuiltins(genHead);
 	free(genHead);
 }
