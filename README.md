@@ -49,13 +49,18 @@ echo "ls -l" | ./hsh
   - [ ] unsetenv
   - [ ] help
   - [ ] history
-
-* PATH
-  - [x] chmod
-  - [x] ls
-  - [x] echo
+* $PATH Commands
 
 ## Roadmap
+- [ ] Add better memory management
+- [ ] Handle commands separator `;`
+- [ ] Handle ogical operators (`||`, `&&`)
+- [ ] Handle aliases
+- [ ] Handle variables replacement
+- [ ] Handle the `$?` variable
+- [ ] Handle the `$$` variable
+- [ ] Handle comments
+- [ ] Handle many of the common shell builtins
 
 ## Testing
 
