@@ -27,6 +27,10 @@ gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
 ```
 
 ## Usage
+Commands are currently executed just like they are in sh, bash, and other common shells. To start Simple Shell, run the command below:
+```sh
+./hsh
+```
 
 ## Commands
 
