@@ -33,7 +33,9 @@ int createFork(char **bufferTokens, general_t *genHead)
 			write(1, ": ", 2);
 			write(1, tmp, _strlen(tmp));
 			write(1, ": not found\n", 12);
+			exit(EXIT_FAILURE);
 		}
+		exit(0);
 	}
 	else
 	{
