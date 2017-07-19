@@ -40,6 +40,8 @@ echo "ls -l" | ./hsh
 ```
 
 ## Commands
+The commands that you can use right now with Simple Shell are indicated with a checkmark. The ones that aren't are left unchecked. Of course, the builtins provided aren't the only builtins we plan on implementing. The usage of these commands are similar to that of sh, bash, and many of the most commonly-used shells.
+
 * Builtins
   - [x] exit
   - [x] env
@@ -52,6 +54,8 @@ echo "ls -l" | ./hsh
 * $PATH Commands
 
 ## Roadmap
+We may currently have a functional shell where you can use several builtins and commands found in the directories listed in the PATH environment variable, but we are definitely not yet done with our "Minimum Viable Shell." Below are the tasks we would like to accomplish before forking this project and creating our own domain-specific shells.
+
 - [ ] Add better memory management
 - [ ] Handle commands separator (`;`)
 - [ ] Handle logical operators (`||`, `&&`)
