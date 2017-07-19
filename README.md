@@ -63,6 +63,7 @@ echo "ls -l" | ./hsh
 - [ ] Handle many of the common shell builtins
 
 ## Testing
+If you as a developer would like to fork our current project and create your own domain-specific shell, feel free to use a [testing suite](https://github.com/srinitude/shellgame) that we created to compare the output and errors of our/your shell with that of sh's.
 
 ## Credits
 Simple Shell is owned and maintained by Kiren Srinivasan ([@srinitude](https://twitter.com/srinitude)) and Felicia Hsieh ([@feliciahsiehsw](https://twitter.com/feliciahsiehsw)). You can reply to us and to [@holbertonschool](https://twitter.com/holbertonschool) on Twitter for more updates on this project and our forked projects.
