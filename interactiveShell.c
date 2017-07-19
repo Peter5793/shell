@@ -14,7 +14,7 @@ int interactiveShell(general_t *genHead)
 	{
 		genHead->nCommands++;
 		printPrompt("shakeup$ ");
-		buffer = getUserInput(buffer, &len);
+		buffer = getUserInput(buffer, &len, genHead);
 		bufferTokens = parseBuffer(buffer, genHead);
 		findBuiltin(genHead, bufferTokens[0]);
 		if (correctAbsPath(bufferTokens[0]))

@@ -21,7 +21,7 @@ char *mallocBuffer(size_t length, general_t *genHead)
  * @length: length of user's input
  * Return: pointer to user's input line
  */
-char *getUserInput(char *buffer, size_t *length)
+char *getUserInput(char *buffer, size_t *length, general_t *genHead)
 {
 	ssize_t chars_read;
 
@@ -38,6 +38,7 @@ char *getUserInput(char *buffer, size_t *length)
 		free(buffer);
 		exit(0);
 	}
+	addMemAddress(genHead, (void *)buffer);
 	return (buffer);
 }
 /**

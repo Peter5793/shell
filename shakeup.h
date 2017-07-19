@@ -69,7 +69,7 @@ char *__strcat(char *dest, char *source);
 int _strcmp(char *s1, char *s2);
 char *_itoa(unsigned int num);
 
-char *getUserInput(char *buffer, size_t *length);
+char *getUserInput(char *buffer, size_t *length, general_t *genHead);
 int checkEOF(char *buffer);
 char **parseBuffer(char *buffer, general_t *genHead);
 
