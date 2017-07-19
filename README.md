@@ -27,20 +27,33 @@ gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
 ```
 
 ## Usage
-Commands are currently executed just like they are in sh, bash, and other common shells. To start Simple Shell, run the command below:
+Commands are currently executed just like they are in sh, bash, and other common shells.
+
+To start Simple Shell in interactive mode, run the command below:
 ```sh
 ./hsh
+```
+
+To start Simple Shell in non-interactive mode, 'echo' the command you want to run and pipe the standard output into Simple Shell:
+```sh
+echo "ls -l" | ./hsh
 ```
 
 ## Commands
 * Builtins
   - [x] exit
   - [x] env
+  - [x] pwd
   - [ ] cd
+  - [ ] setenv
+  - [ ] unsetenv
+  - [ ] help
+  - [ ] history
+
 * PATH
   - [x] chmod
   - [x] ls
-  - [ ] echo
+  - [x] echo
 
 ## Roadmap
 
