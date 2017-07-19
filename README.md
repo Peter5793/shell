@@ -11,7 +11,6 @@ For those interested in what happens when a typical shell executes a command typ
 * [Installation](#installation)
 * [Usage](#usage)
 * [Commands](#commands)
-* [Usage](#usage)
 * [Roadmap](#roadmap)
 * [Testing](#testing)
 * [Credits](#credits)
