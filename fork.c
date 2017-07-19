@@ -1,5 +1,6 @@
 #include "shakeup.h"
 #include "errno.h"
+
 /**
  * createFork - run the user's command with fork and execve
  * @bufferTokens: user's command properly formatted
@@ -22,7 +23,6 @@ int createFork(char **bufferTokens, general_t *genHead)
 	if (tmp == NULL)
 		perror("createFork:Could not malloc");
 	tmp = __strcat(tmp, bufferTokens[0]);
-	addMemAddress(genHead, (void *)tmp);
 	if (child_pid == 0)
 	{
 		if (execve(bufferTokens[0], bufferTokens, genHead->_env) == -1)
@@ -33,6 +33,9 @@ int createFork(char **bufferTokens, general_t *genHead)
 			write(1, ": ", 2);
 			write(1, tmp, _strlen(tmp));
 			write(1, ": not found\n", 12);
+			free(tmp);
+			free(tmpNum);
+			freeStruct(genHead);
 			exit(EXIT_FAILURE);
 		}
 		exit(0);
@@ -40,8 +43,7 @@ int createFork(char **bufferTokens, general_t *genHead)
 	else
 	{
 		wait(&status);
-		if (!genHead->isInteractive)
-			freeStruct(genHead);
+		free(tmp);
 	}
 	return (0);
 }

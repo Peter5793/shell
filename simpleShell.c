@@ -1,4 +1,5 @@
 #include "shakeup.h"
+
 /**
  * main - hsh simple shell program
  * @argc: number of arguments sent to main program
@@ -15,8 +16,8 @@ int main(int argc, char **argv, char **env)
 	argc = argc;
 	argv = argv;
 
-	genHead = initStruct(env, genHead);
-	genHead->builtins = initBuiltins(genHead);
+	genHead = initStruct(env);
+	initBuiltins(genHead);
 
 	if (isatty(STDIN_FILENO))
 	{
@@ -28,6 +29,7 @@ int main(int argc, char **argv, char **env)
 		buf = malloc(1024 * sizeof(char));
 		if (buf == NULL)
 			exit(12);
+		addMemNIBuffer(genHead, buf);
 		charsRead = read(0, buf, 1024);
 		if (charsRead == -1)
 			exit(EXIT_FAILURE);
@@ -36,7 +38,6 @@ int main(int argc, char **argv, char **env)
 			genHead->isInteractive = 0;
 			nonInteractiveShell(buf, genHead);
 		}
-		free(buf);
 	}
 	return (0);
 }
