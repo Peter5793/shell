@@ -13,11 +13,11 @@ char **tokenize(char *str, char *delim, general_t *genHead)
 	int i = 0;
 
 	current = strtok(str, delim);
-	tokens = malloc(50 * sizeof(char *));
+	tokens = malloc(NUM_TOKENS * sizeof(char *));
 	if (tokens == NULL)
 		return (NULL);
 	addMemBufferTokens(genHead, tokens);
-	for (i = 0; i < 10; i++)
+	for (i = 0; i < NUM_TOKENS; i++)
 	{
 		tokens[i] = malloc(100 * sizeof(char));
 		if (tokens[i] == NULL)
@@ -38,5 +38,7 @@ char **tokenize(char *str, char *delim, general_t *genHead)
 		tokens[i] = current;
 		i++;
 	}
+	for (; i < NUM_TOKENS; i++)
+		free(tokens[i]);
 	return (tokens);
 }

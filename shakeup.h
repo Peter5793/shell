@@ -2,6 +2,7 @@
 #define SHAKEUP
 #define HSHPATH "PATH"
 #define ENVSIZE 50
+#define NUM_TOKENS 50
 
 #include <stdio.h>
 #include <stdlib.h>
