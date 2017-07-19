@@ -8,6 +8,7 @@ Thanks for happening upon our project, Simple Shell! Simple Shell was inspired b
 For those interested in what happens when a typical shell executes a command typed by the user in the terminal, check out this [blog post](https://medium.com/@feliciaSWE/linux-command-ls-c-930cf1d7d8a6).
 
 ## Table of Contents
+* [Requirements](#requirements)
 * [Installation](#installation)
 * [Usage](#usage)
 * [Commands](#commands)
@@ -15,6 +16,23 @@ For those interested in what happens when a typical shell executes a command typ
 * [Testing](#testing)
 * [Credits](#credits)
 * [License](#license)
+
+## Requirements
+* Ubuntu 14.04 LTS
+* gcc 4.8.4 (-Wall, -Werror, -Wextra, and -pedantic flags)
+
+## Installation
+```sh
+gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
+```
+
+## Usage
+
+## Commands
+
+## Roadmap
+
+## Testing
 
 ## Credits
 Simple Shell is owned and maintained by Kiren Srinivasan ([@srinitude](https://twitter.com/srinitude)) and Felicia Hsieh ([@feliciahsiehsw](https://twitter.com/feliciahsiehsw)). You can reply to us and to [@holbertonschool](https://twitter.com/holbertonschool) on Twitter for more updates on this project and our forked projects.
