@@ -33,6 +33,14 @@ Commands are currently executed just like they are in sh, bash, and other common
 ```
 
 ## Commands
+* Builtins
+  - [x] exit
+  - [x] env
+  - [ ] cd
+* PATH
+  - [x] chmod
+  - [x] ls
+  - [ ] echo
 
 ## Roadmap
 
