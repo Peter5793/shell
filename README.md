@@ -54,9 +54,9 @@ echo "ls -l" | ./hsh
 ## Roadmap
 - [ ] Add better memory management
 - [ ] Handle commands separator `;`
-- [ ] Handle ogical operators (`||`, `&&`)
+- [ ] Handle logical operators (`||`, `&&`)
 - [ ] Handle aliases
-- [ ] Handle variables replacement
+- [ ] Handle variable replacement
 - [ ] Handle the `$?` variable
 - [ ] Handle the `$$` variable
 - [ ] Handle comments
