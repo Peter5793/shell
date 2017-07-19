@@ -34,7 +34,7 @@ To start Simple Shell in interactive mode, run the command below:
 ./hsh
 ```
 
-To start Simple Shell in non-interactive mode, 'echo' the command you want to run and pipe the standard output into Simple Shell:
+To start Simple Shell in non-interactive mode, `echo` the command or `cat` the pseudo-random file you want to run and pipe the standard output into Simple Shell:
 ```sh
 echo "ls -l" | ./hsh
 ```
