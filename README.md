@@ -48,3 +48,5 @@ Commands are currently executed just like they are in sh, bash, and other common
 
 ## Credits
 Simple Shell is owned and maintained by Kiren Srinivasan ([@srinitude](https://twitter.com/srinitude)) and Felicia Hsieh ([@feliciahsiehsw](https://twitter.com/feliciahsiehsw)). You can reply to us and to [@holbertonschool](https://twitter.com/holbertonschool) on Twitter for more updates on this project and our forked projects.
+
+## License
