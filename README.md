@@ -69,3 +69,4 @@ If you as a developer would like to fork our current project and create your own
 Simple Shell is owned and maintained by Kiren Srinivasan ([@srinitude](https://twitter.com/srinitude)) and Felicia Hsieh ([@feliciahsiehsw](https://twitter.com/feliciahsiehsw)). You can reply to us and to [@holbertonschool](https://twitter.com/holbertonschool) on Twitter for more updates on this project and our forked projects.
 
 ## License
+Simple Shell is released under the MIT license. See [LICENSE](https://github.com/srinitude/simple_shell/blob/master/LICENSE) for details.
