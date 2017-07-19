@@ -18,4 +18,4 @@ For those interested in what happens when a typical shell executes a command typ
 * [License](#license)
 
 ## Credits
-Simple Shell is owned and maintained by Kiren Srinivasan ([@srinitude](https://twitter.com/srinitude)) and Felicia Hsieh ([@feliciahsiehsw](https://twitter.com/feliciahsiehsw)). You can reply to them and to [@holbertonschool](https://twitter.com/holbertonschool) on Twitter for more updates on their forked projects.
+Simple Shell is owned and maintained by Kiren Srinivasan ([@srinitude](https://twitter.com/srinitude)) and Felicia Hsieh ([@feliciahsiehsw](https://twitter.com/feliciahsiehsw)). You can reply to us and to [@holbertonschool](https://twitter.com/holbertonschool) on Twitter for more updates on this project and our forked projects.
