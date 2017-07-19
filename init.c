@@ -1,5 +1,9 @@
 #include "shakeup.h"
-
+/**
+ * initBuiltins - initialize Builtin struct
+ * @genHead: general struct
+ * Return: initialized builtin struct
+ */
 _builtins_t *initBuiltins(general_t *genHead)
 {
 	int numCommands = 5;
@@ -10,19 +14,24 @@ _builtins_t *initBuiltins(general_t *genHead)
 		return (NULL);
 	addMemAddress(genHead, (void *)b);
 
-        b[0].command = "env";
-        b[0].f = runEnv;
-        b[1].command = "exit";
-        b[1].f = runExit;
-        b[2].command = "setenv";
-        b[2].f = runSetenv;
-        b[3].command = "unsetenv";
-        b[3].f = runUnsetenv;
+	b[0].command = "env";
+	b[0].f = runEnv;
+	b[1].command = "exit";
+	b[1].f = runExit;
+	b[2].command = "setenv";
+	b[2].f = runSetenv;
+	b[3].command = "unsetenv";
+	b[3].f = runUnsetenv;
 	b[4].command = NULL;
 	b[4].f = NULL;
-        return (b);
+	return (b);
 }
-
+/**
+ * initStruct - initial general struct
+ * @env: environment data from shell
+ * @genHead: general struct
+ * Return: initialized general struct
+ */
 general_t *initStruct(char **env, general_t *genHead)
 {
 	general_t *uno;
@@ -43,7 +52,7 @@ general_t *initStruct(char **env, general_t *genHead)
 		return (NULL);
 	}
 	addMemAddress(genHead, (void *)uno->_env);
-	while(env[i])
+	while (env[i])
 	{
 		uno->_env[i] = env[i];
 		i++;
