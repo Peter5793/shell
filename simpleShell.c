@@ -18,20 +18,25 @@ int main(int argc, char **argv, char **env)
 	genHead = initStruct(env, genHead);
 	genHead->builtins = initBuiltins(genHead);
 
-	buf = malloc(1024 * sizeof(char));
-	if (buf == NULL)
-		exit(12);
-	charsRead = read(0, buf, 1024);
-	if (charsRead == 0)
+	if (isatty(STDIN_FILENO))
 	{
 		genHead->isInteractive = 1;
 		interactiveShell(genHead);
 	}
 	else
 	{
-		genHead->isInteractive = 0;
-		nonInteractiveShell(buf, genHead);
+		buf = malloc(1024 * sizeof(char));
+		if (buf == NULL)
+			exit(12);
+		charsRead = read(0, buf, 1024);
+		if (charsRead == -1)
+			exit(EXIT_FAILURE);
+		else
+		{
+			genHead->isInteractive = 0;
+			nonInteractiveShell(buf, genHead);
+		}
+		free(buf);
 	}
-	free(buf);
 	return (0);
 }
