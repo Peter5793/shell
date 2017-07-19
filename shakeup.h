@@ -25,8 +25,8 @@ typedef struct list_s
 } list_t;
 
 /**
- * struct builtins__ - struct for matching command lines with functions
- * @prType: char to determine type to print
+ * struct _builtins_s - struct for matching command lines with functions
+ * @command: builtin command
  * @f: associated function
  */
 typedef struct _builtins_s
@@ -37,7 +37,10 @@ typedef struct _builtins_s
 
 /**
  * struct general_s - struct for shell
- * @nCommand: number of commands run by user
+ * @isInteractive: flag for interactive mode
+ * @_env: environment var
+ * @builtins: table of builtins
+ * @nCommands: number of commands run by user
  * @head: head of linked list of malloc'ed memory
  */
 typedef struct general_s
@@ -48,7 +51,6 @@ typedef struct general_s
 	unsigned int nCommands;
 	list_t *head;
 } general_t;
-
 
 _builtins_t *initBuiltins(general_t *genHead);
 general_t *initStruct(char **env, general_t *genHead);
@@ -81,8 +83,8 @@ char *_getenv(char *name);
 void findBuiltin(general_t *vars, char *cmd);
 void runEnv(general_t *genHead);
 void runExit(general_t *genHead);
-void runSetenv();
-void runUnsetenv();
+void runSetenv(void);
+void runUnsetenv(void);
 void freeEnv(general_t *genHead);
 void freeList(general_t *genHead);
 void freeStruct(general_t *genHead);
