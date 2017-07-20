@@ -65,11 +65,11 @@ char **parseBuffer(char *buffer, general_t *genHead);
 
 void printPrompt(char *prompt);
 size_t correctAbsPath(char *token);
-char *findCmd(general_t *genHead, char *b);
+char *findCmd(char *b);
 int createFork(char **bufferTokens, general_t *genHead);
 char *createCWDFile(char *file);
 
-char *_getenv(general_t *genHead, char *name);
+char *_getenv(char *name);
 void findBuiltin(general_t *vars, char *cmd);
 void runEnv(general_t *genHead);
 void runExit(general_t *genHead);
