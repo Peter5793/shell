@@ -10,7 +10,7 @@
 .PP
 .SH DESCRIPTION
 .Bhsh
-creates a simple C shell that runs in interactive and non-interactive mode, similar to the basic "sh" shell. For more details, please refer to the README.md on the Github repository at https://github.com/sriniqtude/simple_shell. The shell is a command that reads lines from either a file or the terminal, interprets them, and generally executes other commands. This program can be run on top of another shell.
+Creates a simple C shell that runs in interactive and non-interactive mode, similar to the basic "sh" shell. For more details, please refer to the README.md on the Github repository at https://github.com/sriniqtude/simple_shell. The shell is a command that reads lines from either a file or the terminal, interprets them, and generally executes other commands. This program can be run on top of another shell.
 .SH INVOCATION
 If no args are present and if the standard input of the shell is connected to a terminal, the shell is considered an interactive shell. An interactive shell generally prompts before each command and handles programming and command errors differently.
 .PP
@@ -27,15 +27,11 @@ When locating a command, the shell first looks to see if it has a shell function
 exit - implements the exit built-in that exits the shell
 .PP
 env - implements the env built-in that prints the current environment
-.SH FILES
-.PP
-$HOME/.bashrc
-.PP
 .SH OTHER
 .PP
 Built-ins and aliases are not supported at this time.
 .PP
-Github Repository: https://github.com/sriniqtude/simple_shell
+Github Repository: https://github.com/srinitude/simple_shell
 .SH AUTHOR
 Written by Kiren Srinivasan and Felicia Hsieh
 .SH REPORTING BUGS
