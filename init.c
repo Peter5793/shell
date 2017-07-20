@@ -30,7 +30,6 @@ builtins_t *initBuiltins(general_t *genHead)
 /**
  * initStruct - initial general struct
  * @env: environment data from shell
- * @genHead: general struct
  * Return: initialized general struct
  */
 general_t *initStruct(char **env)

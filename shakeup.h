@@ -27,9 +27,11 @@ typedef struct builtins_s
  * struct general_s - struct for shell
  * @isInteractive: flag for interactive mode
  * @_env: environment var
+ * @bufferTokens: buffer for the tokens
+ * @nonInteractiveBuffer: buffer for user input in NonInteractive mode
+ * @interactiveBuffer: buffer for user input in Interactive mode
  * @builtins: table of builtins
  * @nCommands: number of commands run by user
- * @head: head of linked list of malloc'ed memory
  */
 typedef struct general_s
 {
@@ -53,6 +55,7 @@ unsigned int _strlen(const char *str);
 char *__strcat(char *dest, char *source);
 int _strcmp(char *s1, char *s2);
 void _strcpy(char *dest, char *src);
+char *_strdup(char *str);
 char *_itoa(unsigned int num);
 
 char *getUserInput(char *buffer, size_t *length, general_t *genHead);
@@ -60,11 +63,11 @@ char **parseBuffer(char *buffer, general_t *genHead);
 
 void printPrompt(char *prompt);
 size_t correctAbsPath(char *token);
-char *findCmd(char *b);
+char *findCmd(general_t *genHead, char *b);
 int createFork(char **bufferTokens, general_t *genHead);
 char *createCWDFile(char *file);
 
-char *_getenv(char *name);
+char *_getenv(general_t *genHead, char *name);
 void findBuiltin(general_t *vars, char *cmd);
 void runEnv(general_t *genHead);
 void runExit(general_t *genHead);

@@ -4,6 +4,7 @@
  * getUserInput - gets user input from shell
  * @buffer: where user's input is stored
  * @length: length of user's input
+ * @genHead: general struct
  * Return: pointer to user's input line
  */
 char *getUserInput(char *buffer, size_t *length, general_t *genHead)
