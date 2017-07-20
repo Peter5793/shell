@@ -2,7 +2,7 @@
 
 /**
  * findBuiltin - find if command is a builtin
- * @vars: general struct
+ * @genHead: general struct
  * @cmd: command to check
  * Return: run function if command is a builtin
  */
