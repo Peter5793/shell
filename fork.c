@@ -16,6 +16,7 @@ int createFork(char **bufferTokens, general_t *genHead)
 	child_pid = fork();
 	if (child_pid == -1)
 	{
+		freeStruct(genHead);
 		perror("fork: Resource temporarily unavailable");
 		return (1);
 	}
