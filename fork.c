@@ -19,7 +19,7 @@ int createFork(char **bufferTokens, general_t *genHead)
 		perror("fork: Resource temporarily unavailable");
 		return (1);
 	}
-	tmp = malloc(100 * sizeof(char));
+	tmp = malloc(500 * sizeof(char));
 	if (tmp == NULL)
 		perror("createFork:Could not malloc");
 	tmp = __strcat(tmp, bufferTokens[0]);

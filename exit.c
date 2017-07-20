@@ -1,4 +1,5 @@
 #include "shakeup.h"
+
 /**
  * runExit - runs exit routine
  * @genHead: general struct

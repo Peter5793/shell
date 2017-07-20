@@ -1,7 +1,7 @@
 #ifndef SHAKEUP
 #define SHAKEUP
 #define HSHPATH "PATH"
-#define ENVSIZE 50
+#define ENVSIZE 33
 #define NUM_TOKENS 50
 
 #include <stdio.h>
