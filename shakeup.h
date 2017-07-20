@@ -12,6 +12,8 @@
 #include <sys/stat.h>
 #include <string.h>
 
+extern char **environ;
+
 /**
  * struct builtins_s - struct for matching command lines with functions
  * @command: builtin command
