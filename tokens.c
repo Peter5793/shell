@@ -1,4 +1,5 @@
 #include "shakeup.h"
+
 /**
  * tokenize - tokenize raw user's data
  * @str: user's raw data
