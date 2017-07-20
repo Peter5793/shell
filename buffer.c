@@ -20,6 +20,9 @@ char *getUserInput(char *buffer, size_t *length, general_t *genHead)
 	{
 		buffer[0] = '\n';
 		write(1, buffer, 1);
+		freeEnv(genHead);
+		freeBuiltins(genHead);
+		free(genHead);
 		free(buffer);
 		exit(0);
 	}
