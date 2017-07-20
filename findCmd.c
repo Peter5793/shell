@@ -2,7 +2,6 @@
 /**
  * findCmd - finds the command in the possible paths from the PATH env var
  * @b: buffer of entir PATH environment variable
- * @genHead: general struct
  * Return: string that returns PATH concatenated with command if found
  */
 char *findCmd(char *b)
