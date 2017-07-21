@@ -1,4 +1,4 @@
-.TH SIMPLE_SHELL "20 July 2017" "01" "User Commands"
+.TH HSH 1 "2017-07-20" "Linux" "Linux Shell User Manual"
 .SH NAME
 .B hsh
 - simple command interpreter (shell)
