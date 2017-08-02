@@ -11,11 +11,11 @@ char *findCmd(char *b)
 	int count1 = 0;
 
 	hshPath = _getenv(HSHPATH);
-	tmpPath = malloc(_strlen(hshPath) * sizeof(char));
+	tmpPath = malloc(_strlen(hshPath) * sizeof(char) + 1);
 	if (tmpPath == NULL)
 		return (NULL);
 	tmpPath = __strcat(tmpPath, hshPath);
-	tmpToken = malloc(_strlen(b) * sizeof(char));
+	tmpToken = malloc(_strlen(b) * sizeof(char) + 1);
 	if (tmpToken == NULL)
 		return (NULL);
 	tmpToken = __strcat(tmpToken, b);
@@ -32,8 +32,10 @@ char *findCmd(char *b)
 		if (stat(t, &st) == 0)
 		{
 			free(tmpPath);
+			free(tmpToken);
 			return (t);
 		}
+		free(t);
 	}
 	free(tmpPath);
 	return (tmpToken);

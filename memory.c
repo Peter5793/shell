@@ -86,6 +86,8 @@ void addMemBufferTokens(general_t *genHead, char **tokens)
 		perror("addMemBufferTokens(): tokens empty");
 		exit(EXIT_FAILURE);
 	}
+	if (tokens != NULL)
+		freeBufferTokens(genHead);
 	genHead->bufferTokens = tokens;
 }
 
