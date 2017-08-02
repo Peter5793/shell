@@ -36,6 +36,7 @@ char **tokenize(char *str, char *delim, general_t *genHead)
 	{
 		if (i > 0)
 			current = strtok(NULL, delim);
+		free(tokens[i]);
 		tokens[i] = current;
 		i++;
 	}
