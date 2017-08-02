@@ -24,9 +24,10 @@ void freeBufferTokens(general_t *genHead)
 {
 	unsigned int i;
 
-	for (i = 0; genHead->bufferTokens[i]; i++)
+	for (i = 0; genHead->bufferTokens && genHead->bufferTokens[i]; i++)
 		free(genHead->bufferTokens[i]);
-	free(genHead->bufferTokens);
+	if (genHead->bufferTokens)
+		free(genHead->bufferTokens);
 }
 
 /**
