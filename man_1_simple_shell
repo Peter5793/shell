@@ -1,7 +1,7 @@
 .TH HSH 1 "2017-07-20" "Linux" "Linux Shell User Manual"
 .SH NAME
 .B hsh
-- simple command interpreter (shell)
+- command interpreter (shell)
 .SH SYNOPSIS
 .B hsh
 .I COMMAND
@@ -10,7 +10,7 @@
 .PP
 .SH DESCRIPTION
 .Bhsh
-Creates a simple C shell that runs in interactive and non-interactive mode, similar to the basic "sh" shell. For more details, please refer to the README.md on the Github repository at https://github.com/sriniqtude/simple_shell. The shell is a command that reads lines from either a file or the terminal, interprets them, and generally executes other commands. This program can be run on top of another shell.
+Creates a C shell that runs in interactive and non-interactive mode, similar to the basic "sh" shell. For more details, please refer to the README.md on the Github repository at https://github.com/sriniqtude/shell. The shell is a command that reads lines from either a file or the terminal, interprets them, and generally executes other commands. This program can be run on top of another shell.
 .SH INVOCATION
 If no args are present and if the standard input of the shell is connected to a terminal, the shell is considered an interactive shell. An interactive shell generally prompts before each command and handles programming and command errors differently.
 .PP
@@ -31,7 +31,7 @@ env - implements the env built-in that prints the current environment
 .PP
 Built-ins and aliases are not supported at this time.
 .PP
-Github Repository: https://github.com/srinitude/simple_shell
+Github Repository: https://github.com/srinitude/shell
 .SH AUTHOR
 Written by Kiren Srinivasan and Felicia Hsieh
 .SH REPORTING BUGS
